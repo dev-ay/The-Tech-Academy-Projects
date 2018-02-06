@@ -1,3 +1,24 @@
+/* Removes bullets in ie, still needs more work */
 li {
     list-style: none;
+}
+
+.jumbotron {
+    text-align: left;
+}
+
+/* Spaces out the content from the sides of the window */
+#checks {
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.clear {
+    margin: 10px;
+}
+
+
+/* Increases the size of the HTML check boxes */
+input[type=checkbox] {
+    transform: scale(1.1);
 }

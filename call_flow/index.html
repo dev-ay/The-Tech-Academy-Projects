@@ -1,50 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Call Flow</title>
+        <title>Call Flow</title>
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="./style/style.css">
-  </head>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="./style/style.css">
+    </head>
 
-  <body>
-    <!-- Jumbotron -->
-    <div class="jumbotron jumbotron-fluid">
-        <div class="container">
-            <h1 class="display-3">Call Flow</h1>
-            <!-- <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p> -->
+    <body>
+
+        <!-- Navigation bar -->
+
+        <ul class="nav nav-tabs bg-faded">
+            <li class="nav-item">
+                <a class="nav-link active" href="#">List Items</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="./checks.html">Check Boxes</a>
+            </li>
+            <!-- <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#">Disabled</a>
+            </li> -->
+        </ul>
+                
+
+        <!-- Jumbotron -->
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h1 class="display-3">Call Flow</h1>
+                <!-- <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p> -->
+            </div>
         </div>
-    </div>
-      
+        
 
-    <!-- Progress Bar -->
-    <div class="w3-light-grey w3-round" id="progress">
-        <div class="w3-container w3-blue w3-round" id="bar" style="width:15%">15%</div>
-    </div>
+        <!-- Progress Bar -->
+        <div class="w3-light-grey w3-round" id="progress">
+            <div class="w3-container w3-blue w3-round" id="bar" style="width:12%">12%</div>
+        </div>
 
-    <br>
-    <!-- List Group -->
-    <ul class="list-group" id="steps">
-        <li class="list-group-item active">Eligibility</li>
-        <li class="list-group-item">Plan</li>
-        <li class="list-group-item">Provider</li>
-        <li class="list-group-item">Deductible</li>
-        <li class="list-group-item">Copay/Coinsurance</li>
-        <li class="list-group-item">Out of Pocket Max</li>
-        <li class="list-group-item">Limits & Accumulators</li>
-    </ul>
-            
+        <br>
+        <!-- List Group -->
+        <div class = "flow_list">
+            <ul class="list-group" id="steps">
+                <li class="list-group-item active">Eligibility</li>
+                <li class="list-group-item">Plan</li>
+                <li class="list-group-item">Provider</li>
+                <li class="list-group-item">Deductible</li>
+                <li class="list-group-item">Copay/Coinsurance</li>
+                <li class="list-group-item">Out of Pocket Max</li>
+                <li class="list-group-item">Limits & Accumulators</li>
+                <li class="list-group-item">Referral & PA Requirements &nbsp;<i>*if applicable</i></li>
+            </ul>
+        </div>
+                
 
-    <!-- jQuery first, then Tether, then Bootstrap JS. -->
-    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-    <script src="script.js"></script>
-  </body>
+        <!-- jQuery first, then Tether, then Bootstrap JS. -->
+        <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+        <script src="script.js"></script>
+    </body>
 </html>
