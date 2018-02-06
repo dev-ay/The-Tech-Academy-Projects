@@ -17,8 +17,12 @@ li {
     margin: 10px;
 }
 
+.instructions {
+    font-style: italic;
+    margin: 10px;
+}
 
 /* Increases the size of the HTML check boxes */
 input[type=checkbox] {
-    transform: scale(1.1);
+    transform: scale(1.3);
 }
