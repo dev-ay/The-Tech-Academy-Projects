@@ -6,4 +6,4 @@ I am a current student at The Tech Academy, a software development boot camp and
 * [Dynamic Login Page](https://github.com/jhunschejones/The-Tech-Academy-Projects/tree/master/login) (HTML, CSS)  
 * [SQL/TSQL Drills](https://github.com/jhunschejones/The-Tech-Academy-Projects/tree/master/SQL%20Drills) (SQL, TSQL)
 * [Library Database Project](https://github.com/jhunschejones/The-Tech-Academy-Projects/tree/master/library) (SQL, TSQL)
-* [C# Basics](https://github.com/jhunschejones/The-Tech-Academy-Projects/tree/master/C#%20Basics) (C#, HTML, CSS)
+* [C# Basics](https://github.com/jhunschejones/The-Tech-Academy-Projects/tree/master/C%23%20Basics) (C#, HTML, CSS)
