@@ -17,12 +17,12 @@ namespace Challenge10
         protected void Button1_Click(object sender, EventArgs e)
         {
             string a = firstValue.Text;
-            int c = Int32.Parse(a);
+            double c = double.Parse(a);
 
             string b = secondValue.Text;
-            int d = Int32.Parse(b);
+            double d = double.Parse(b);
 
-            int result = c + d;
+            double result = c + d;
             resultLabel.Text = result.ToString();
 
         }
@@ -30,36 +30,36 @@ namespace Challenge10
         protected void Button2_Click(object sender, EventArgs e)
         {
             string a = firstValue.Text;
-            int c = Int32.Parse(a);
+            double c = double.Parse(a);
 
             string b = secondValue.Text;
-            int d = Int32.Parse(b);
+            double d = double.Parse(b);
 
-            int result = c - d;
+            double result = c - d;
             resultLabel.Text = result.ToString();
         }
 
         protected void Button3_Click(object sender, EventArgs e)
         {
             string a = firstValue.Text;
-            int c = Int32.Parse(a);
+            double c = double.Parse(a);
 
             string b = secondValue.Text;
-            int d = Int32.Parse(b);
+            double d = double.Parse(b);
 
-            int result = c * d;
+            double result = c * d;
             resultLabel.Text = result.ToString();
         }
 
         protected void Button4_Click(object sender, EventArgs e)
         {
             string a = firstValue.Text;
-            int c = Int32.Parse(a);
+            double c = double.Parse(a);
 
             string b = secondValue.Text;
-            int d = Int32.Parse(b);
+            double d = double.Parse(b);
 
-            int result = c / d;
+            double result = c / d;
             resultLabel.Text = result.ToString();
         }
     }
