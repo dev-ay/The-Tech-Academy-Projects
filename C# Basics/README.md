@@ -8,3 +8,4 @@ This repository houses the smaller projects I created during the C# course at Th
 * [Flight Prices Exercise](https://github.com/jhunschejones/The-Tech-Academy-Projects/tree/master/C%23%20Basics/CS-ASP_022) (Visual C#, Webforms)
 * [Asset Tracker](https://github.com/jhunschejones/The-Tech-Academy-Projects/tree/master/C%23%20Basics/Challenge23) (Visual C#, Webforms)
 * [Iterator](https://github.com/jhunschejones/The-Tech-Academy-Projects/tree/master/C%23%20Basics/ChallengeForXmenBattleCount) (Visual C#, Webforms)
+* [Hero vs Monster, Loops](https://github.com/jhunschejones/The-Tech-Academy-Projects/tree/master/C%23%20Basics/CS-ASP_027) (Visual C#, Webforms)
