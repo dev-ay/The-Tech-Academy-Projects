@@ -1,4 +1,4 @@
-// here we are requireing the modules used
+// here we are requireing the modules used in our application
 var express = require("express");
 var bodyParser = require("body-parser");
 var app = express();
@@ -18,27 +18,23 @@ var Message = mongoose.model("Message", {
     message: String
 })
 
-
-// here's another callback!
 app.get("/messages", (request, response) =>{
     Message.find({}, (err, messages) => {
         response.send(messages)
     })
 });
 
-// here's another callback!
-app.post("/messages", (request, response) =>{
-    var message = new Message(request.body)
 
-    message.save((err) => {
-        if(err) {
-            sendStatus(500)
-        }
-        else {
-            io.emit("message", request.body)
-            response.sendStatus(200)
-        }
-    })
+app.post("/messages", async (request, response) =>{
+    try {
+        var message = new Message(request.body)
+        var savedMessage = await message.save()
+        io.emit("message", request.body)
+        response.sendStatus(200)        
+    } catch (error) {
+        response.sendStatus(500)
+        return console.log(error)
+    } 
 });
 
 io.on("connection", (socket) => {
