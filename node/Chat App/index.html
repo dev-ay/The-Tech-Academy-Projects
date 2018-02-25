@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Node.js Messenger</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" /> -->
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <!-- <script src="main.js"></script> -->
+    <script src="./socket.io/socket.io.js"></script>
+</head>
+<body>
+    <div class="container">
+        <br />
+        <div class="jumbotron">
+            <h1 class="display-4">Send Message</h1>
+            <br />
+            <input id="name"class="form-control" placeholder="Name">
+            <br />
+            <textarea id="message"class="form-control" placeholder="Message"></textarea>
+            <br />
+            <button id="send" class="btn btn-success">Send</button>
+        </div>
+        <div id="messages">
+
+        </div>
+    </div>
+    <script>
+        var socket = io();
+
+        // Document ready function
+        $(() => {
+            // this () => is called a callback
+            $("#send").click(() => {
+                // here we are passing in an object
+                var message = { name: $("#name").val(), message: $("#message").val() }
+                postMessage(message)
+            })
+            getMessages()
+        })
+
+        socket.on("message", addMessages)
+
+        // add messages function
+        function addMessages(message) {
+            // the back-tick is for javascript template literals
+            // this allows us to inject variables into strings
+            $("#messages").append(`<h4> ${message.name} </h4> <p> ${message.message} </p>`)
+        };
+
+        function getMessages(){
+            $.get("http://localhost:3000/messages", (data) => {
+                data.forEach(addMessages);
+            })
+        }
+
+        function postMessage(message){
+            $.post("http://localhost:3000/messages", message)
+        }
+    </script>
+</body>
+</html>

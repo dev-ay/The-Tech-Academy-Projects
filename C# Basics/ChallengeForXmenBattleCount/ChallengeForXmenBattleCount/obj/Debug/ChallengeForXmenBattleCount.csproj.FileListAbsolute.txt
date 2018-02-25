@@ -1,6 +1,0 @@
-C:\Users\Student\Documents\GitHub\The-Tech-Academy-Projects\C# Basics\ChallengeForXmenBattleCount\ChallengeForXmenBattleCount\bin\ChallengeForXmenBattleCount.dll.config
-C:\Users\Student\Documents\GitHub\The-Tech-Academy-Projects\C# Basics\ChallengeForXmenBattleCount\ChallengeForXmenBattleCount\bin\ChallengeForXmenBattleCount.dll
-C:\Users\Student\Documents\GitHub\The-Tech-Academy-Projects\C# Basics\ChallengeForXmenBattleCount\ChallengeForXmenBattleCount\bin\ChallengeForXmenBattleCount.pdb
-C:\Users\Student\Documents\GitHub\The-Tech-Academy-Projects\C# Basics\ChallengeForXmenBattleCount\ChallengeForXmenBattleCount\obj\Debug\ChallengeForXmenBattleCount.csprojResolveAssemblyReference.cache
-C:\Users\Student\Documents\GitHub\The-Tech-Academy-Projects\C# Basics\ChallengeForXmenBattleCount\ChallengeForXmenBattleCount\obj\Debug\ChallengeForXmenBattleCount.dll
-C:\Users\Student\Documents\GitHub\The-Tech-Academy-Projects\C# Basics\ChallengeForXmenBattleCount\ChallengeForXmenBattleCount\obj\Debug\ChallengeForXmenBattleCount.pdb
