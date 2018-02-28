@@ -38,18 +38,24 @@ router.post('/newanimal', function(req, res) {
   var collection = db.get('usercollection');
 
   // Submit to the database
-  collection.insert({
-    "name": animalName,
-    "age": animalAge,
-    "type": animalType
-  }, function (err, doc) {
-    if (err) {
-      res.send("There was a problem adding your information to the database.")
-    }
-    else {
-      res.redirect("animals")
-    }
-  });
+  if (animalName != "" || animalAge != "" || animalType != "") {
+    collection.insert({
+      "name": animalName,
+      "age": animalAge,
+      "type": animalType
+    }, function (err, doc) {
+      if (err) {
+        res.send("There was a problem adding your information to the database.")
+      }
+      else {
+        res.redirect("animals")
+      }
+    });
+  }
+  else {
+    console.log("attempted to add empty field")
+    res.send(`<br/><p>There was a problem adding your information to the database.</p><p>Please fill in all the fields. Hit back to try again!</p>`)
+  }
 });
 
 module.exports = router;

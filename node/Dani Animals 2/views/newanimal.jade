@@ -2,10 +2,11 @@ extends layout
 
 block content
   h1= title
-  form#formAddAnimal(name="addanimal",method="post",action="/newanimal")
+  form#formAddAnimal(name="addanimal", method="post", action="/newanimal")
     input#inputAnimalName(type="text", placeholder="Name", name="animalname")
     input#inputAnimalAge(type="text", placeholder="Age", name="animalage")
     input#inputAnimalType(type="text", placeholder="Animal Type", name="animaltype")
-    button#btnSubmit(type="submit") submit
+    button#btnSubmit(type="submit", class="btn btn-sm btn-primary") submit
   br
   a(class='button', href='./animals') Back to Family List
+  
