@@ -2,8 +2,9 @@ extends layout
 
 block content
   h1.
-    Our Family
+    Our Family:
   ul
     each animal, i in animals
       li.
-        #{animal.name}
+        #{animal.name}, a #{animal.age} year old #{animal.type}
+  a(class='button', href='./newanimal') Add a new Friend!

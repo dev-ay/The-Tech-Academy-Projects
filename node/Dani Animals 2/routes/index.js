@@ -23,4 +23,33 @@ router.get('/animals', function(req, res) {
   });
 });
 
+// GET New Animal page
+router.get('/newanimal', function(req, res) {
+  res.render('newanimal', { title: 'Add New Animal' })
+});
+
+// POST for new animals
+router.post('/newanimal', function(req, res) {
+  var db = req.db;
+  var animalName = req.body.animalname;
+  var animalAge = req.body.animalage;
+  var animalType = req.body.animaltype;
+  
+  var collection = db.get('usercollection');
+
+  // Submit to the database
+  collection.insert({
+    "name": animalName,
+    "age": animalAge,
+    "type": animalType
+  }, function (err, doc) {
+    if (err) {
+      res.send("There was a problem adding your information to the database.")
+    }
+    else {
+      res.redirect("animals")
+    }
+  });
+});
+
 module.exports = router;
