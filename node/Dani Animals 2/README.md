@@ -1,4 +1,4 @@
-# "Full Stack" App
+# Dani's Animals 2
 
 ## Overview
 This is a basic server UI webpage created using node.js, express, jade, and mongodb.

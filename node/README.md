@@ -4,6 +4,7 @@ After completing the Microsoft development courses at The Tech Academy in 2018, 
   
 Though it is not technically part of the TTA boot camp content, I am storing these projects here for the time being because I think they still represent an important chapter in my path to learning full stack software development. 
 
-## Projects in this Repository:
+## Projects in this "Course":
 * [Chat App](https://github.com/jhunschejones/The-Tech-Academy-Projects/tree/master/node/Chat%20App) (mongodb, express and socket.io)
-* [“Full Stack” App](https://github.com/jhunschejones/The-Tech-Academy-Projects/tree/master/node/Dani%20Animals%202) (node.js, express, jade, and mongodb)
+* ["Dani's Animals": 2](https://github.com/jhunschejones/The-Tech-Academy-Projects/tree/master/node/Dani%20Animals%202) (node.js, express, jade, and mongodb)
+* ["Dani's Animals": 3](https://github.com/jhunschejones/Dani-Animals-3) (An improved full-stack app using node.js, express, jade, and mongodb)
