@@ -1,0 +1,16 @@
+/Users/joshua/Desktop/FirstUnitTest/FirstUnitTest.Test/bin/Debug/netcoreapp2.0/xunit.runner.visualstudio.dotnetcore.testadapter.dll
+/Users/joshua/Desktop/FirstUnitTest/FirstUnitTest.Test/bin/Debug/netcoreapp2.0/xunit.runner.utility.netstandard15.dll
+/Users/joshua/Desktop/FirstUnitTest/FirstUnitTest.Test/bin/Debug/netcoreapp2.0/xunit.runner.reporters.netstandard15.dll
+/Users/joshua/Desktop/FirstUnitTest/FirstUnitTest.Test/bin/Debug/netcoreapp2.0/FirstUnitTest.Test.deps.json
+/Users/joshua/Desktop/FirstUnitTest/FirstUnitTest.Test/bin/Debug/netcoreapp2.0/FirstUnitTest.Test.runtimeconfig.json
+/Users/joshua/Desktop/FirstUnitTest/FirstUnitTest.Test/bin/Debug/netcoreapp2.0/FirstUnitTest.Test.runtimeconfig.dev.json
+/Users/joshua/Desktop/FirstUnitTest/FirstUnitTest.Test/bin/Debug/netcoreapp2.0/FirstUnitTest.Test.dll
+/Users/joshua/Desktop/FirstUnitTest/FirstUnitTest.Test/bin/Debug/netcoreapp2.0/FirstUnitTest.Test.pdb
+/Users/joshua/Desktop/FirstUnitTest/FirstUnitTest.Test/bin/Debug/netcoreapp2.0/FirstUnitTest.dll
+/Users/joshua/Desktop/FirstUnitTest/FirstUnitTest.Test/bin/Debug/netcoreapp2.0/FirstUnitTest.pdb
+/Users/joshua/Desktop/FirstUnitTest/FirstUnitTest.Test/obj/Debug/netcoreapp2.0/FirstUnitTest.Test.csprojResolveAssemblyReference.cache
+/Users/joshua/Desktop/FirstUnitTest/FirstUnitTest.Test/obj/Debug/netcoreapp2.0/FirstUnitTest.Test.csproj.CoreCompileInputs.cache
+/Users/joshua/Desktop/FirstUnitTest/FirstUnitTest.Test/obj/Debug/netcoreapp2.0/FirstUnitTest.Test.AssemblyInfoInputs.cache
+/Users/joshua/Desktop/FirstUnitTest/FirstUnitTest.Test/obj/Debug/netcoreapp2.0/FirstUnitTest.Test.AssemblyInfo.cs
+/Users/joshua/Desktop/FirstUnitTest/FirstUnitTest.Test/obj/Debug/netcoreapp2.0/FirstUnitTest.Test.dll
+/Users/joshua/Desktop/FirstUnitTest/FirstUnitTest.Test/obj/Debug/netcoreapp2.0/FirstUnitTest.Test.pdb

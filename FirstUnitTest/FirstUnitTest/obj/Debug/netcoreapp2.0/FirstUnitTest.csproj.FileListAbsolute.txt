@@ -1,0 +1,8 @@
+/Users/joshua/Desktop/FirstUnitTest/FirstUnitTest/bin/Debug/netcoreapp2.0/FirstUnitTest.deps.json
+/Users/joshua/Desktop/FirstUnitTest/FirstUnitTest/bin/Debug/netcoreapp2.0/FirstUnitTest.dll
+/Users/joshua/Desktop/FirstUnitTest/FirstUnitTest/bin/Debug/netcoreapp2.0/FirstUnitTest.pdb
+/Users/joshua/Desktop/FirstUnitTest/FirstUnitTest/obj/Debug/netcoreapp2.0/FirstUnitTest.csproj.CoreCompileInputs.cache
+/Users/joshua/Desktop/FirstUnitTest/FirstUnitTest/obj/Debug/netcoreapp2.0/FirstUnitTest.AssemblyInfoInputs.cache
+/Users/joshua/Desktop/FirstUnitTest/FirstUnitTest/obj/Debug/netcoreapp2.0/FirstUnitTest.AssemblyInfo.cs
+/Users/joshua/Desktop/FirstUnitTest/FirstUnitTest/obj/Debug/netcoreapp2.0/FirstUnitTest.dll
+/Users/joshua/Desktop/FirstUnitTest/FirstUnitTest/obj/Debug/netcoreapp2.0/FirstUnitTest.pdb

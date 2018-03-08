@@ -27,6 +27,9 @@ I am a current student at The Tech Academy, a software development boot camp and
 ### ASP.NET MVC
 * ["Dani's Animals": 1](https://github.com/jhunschejones/The-Tech-Academy-C--Part-2/tree/master/DaniAnimals) (C#, SQL, Razor, Bootstrap)
 
+### Unit Testing in C#
+* [Basic Unit Test](https://github.com/jhunschejones/The-Tech-Academy-Projects/tree/master/firstunittest) (C#)
+
 ### Node.js/JavaScript Stack
 * [Chat App](https://github.com/jhunschejones/The-Tech-Academy-Projects/tree/master/node/Chat%20App) (mongodb, express, and socket.io)
 * ["Dani's Animals": 2](https://github.com/jhunschejones/The-Tech-Academy-Projects/tree/master/node/Dani%20Animals%202) (node.js, express, jade, and mongodb)
