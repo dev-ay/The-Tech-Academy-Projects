@@ -1,0 +1,52 @@
+#home {
+	margin-top: 80px;
+	margin-bottom: 40px;
+	text-align: center;
+}
+
+#experience img {
+	margin: 5px;
+	height: 64px;
+	display: inline-block;
+}
+
+.experience_header {
+	text-align: center;
+	margin-top: 30px;
+}
+
+#experience .jumbotron {
+	padding: 20px;
+	text-align: center;
+	margin-bottom: 60px;
+}
+
+.portfolio_header {
+	margin-bottom: 0px;
+}
+
+/* ===== adjusts the positioning on the page so nav links work ===== */
+
+#portfolio:before { 
+	display: block; 
+	content: " "; 
+	margin-top: -60px; 
+	height: 60px; 
+	visibility: hidden; 
+}
+
+#experience:before { 
+	display: block; 
+	content: " "; 
+	margin-top: -35px; 
+	height: 35px; 
+	visibility: hidden; 
+}
+
+#about:before, #home:before { 
+	display: block; 
+	content: " "; 
+	margin-top: -60px; 
+	height: 60px; 
+	visibility: hidden; 
+}
