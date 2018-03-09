@@ -1,0 +1,4 @@
+/Users/joshua/Desktop/SalaryCalculatorTest/SalaryCalculatorTest/obj/Debug/netcoreapp2.0/SalaryCalculatorTest.csprojResolveAssemblyReference.cache
+/Users/joshua/Desktop/SalaryCalculatorTest/SalaryCalculatorTest/obj/Debug/netcoreapp2.0/SalaryCalculatorTest.csproj.CoreCompileInputs.cache
+/Users/joshua/Desktop/SalaryCalculatorTest/SalaryCalculatorTest/obj/Debug/netcoreapp2.0/SalaryCalculatorTest.AssemblyInfoInputs.cache
+/Users/joshua/Desktop/SalaryCalculatorTest/SalaryCalculatorTest/obj/Debug/netcoreapp2.0/SalaryCalculatorTest.AssemblyInfo.cs

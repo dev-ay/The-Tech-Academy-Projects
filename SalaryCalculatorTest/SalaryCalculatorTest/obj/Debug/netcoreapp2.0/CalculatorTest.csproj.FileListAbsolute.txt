@@ -1,0 +1,16 @@
+/Users/joshua/Desktop/SalaryCalculatorTest/SalaryCalculatorTest/bin/Debug/netcoreapp2.0/Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+/Users/joshua/Desktop/SalaryCalculatorTest/SalaryCalculatorTest/bin/Debug/netcoreapp2.0/Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+/Users/joshua/Desktop/SalaryCalculatorTest/SalaryCalculatorTest/bin/Debug/netcoreapp2.0/Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+/Users/joshua/Desktop/SalaryCalculatorTest/SalaryCalculatorTest/bin/Debug/netcoreapp2.0/CalculatorTest.deps.json
+/Users/joshua/Desktop/SalaryCalculatorTest/SalaryCalculatorTest/bin/Debug/netcoreapp2.0/CalculatorTest.runtimeconfig.json
+/Users/joshua/Desktop/SalaryCalculatorTest/SalaryCalculatorTest/bin/Debug/netcoreapp2.0/CalculatorTest.runtimeconfig.dev.json
+/Users/joshua/Desktop/SalaryCalculatorTest/SalaryCalculatorTest/bin/Debug/netcoreapp2.0/CalculatorTest.dll
+/Users/joshua/Desktop/SalaryCalculatorTest/SalaryCalculatorTest/bin/Debug/netcoreapp2.0/CalculatorTest.pdb
+/Users/joshua/Desktop/SalaryCalculatorTest/SalaryCalculatorTest/bin/Debug/netcoreapp2.0/Calculator.dll
+/Users/joshua/Desktop/SalaryCalculatorTest/SalaryCalculatorTest/bin/Debug/netcoreapp2.0/Calculator.pdb
+/Users/joshua/Desktop/SalaryCalculatorTest/SalaryCalculatorTest/obj/Debug/netcoreapp2.0/CalculatorTest.csprojResolveAssemblyReference.cache
+/Users/joshua/Desktop/SalaryCalculatorTest/SalaryCalculatorTest/obj/Debug/netcoreapp2.0/CalculatorTest.csproj.CoreCompileInputs.cache
+/Users/joshua/Desktop/SalaryCalculatorTest/SalaryCalculatorTest/obj/Debug/netcoreapp2.0/CalculatorTest.AssemblyInfoInputs.cache
+/Users/joshua/Desktop/SalaryCalculatorTest/SalaryCalculatorTest/obj/Debug/netcoreapp2.0/CalculatorTest.AssemblyInfo.cs
+/Users/joshua/Desktop/SalaryCalculatorTest/SalaryCalculatorTest/obj/Debug/netcoreapp2.0/CalculatorTest.dll
+/Users/joshua/Desktop/SalaryCalculatorTest/SalaryCalculatorTest/obj/Debug/netcoreapp2.0/CalculatorTest.pdb

@@ -1,0 +1,8 @@
+/Users/joshua/Desktop/SalaryCalculatorTest/Calculator/bin/Debug/netcoreapp2.0/Calculator.deps.json
+/Users/joshua/Desktop/SalaryCalculatorTest/Calculator/bin/Debug/netcoreapp2.0/Calculator.dll
+/Users/joshua/Desktop/SalaryCalculatorTest/Calculator/bin/Debug/netcoreapp2.0/Calculator.pdb
+/Users/joshua/Desktop/SalaryCalculatorTest/Calculator/obj/Debug/netcoreapp2.0/Calculator.csproj.CoreCompileInputs.cache
+/Users/joshua/Desktop/SalaryCalculatorTest/Calculator/obj/Debug/netcoreapp2.0/Calculator.AssemblyInfoInputs.cache
+/Users/joshua/Desktop/SalaryCalculatorTest/Calculator/obj/Debug/netcoreapp2.0/Calculator.AssemblyInfo.cs
+/Users/joshua/Desktop/SalaryCalculatorTest/Calculator/obj/Debug/netcoreapp2.0/Calculator.dll
+/Users/joshua/Desktop/SalaryCalculatorTest/Calculator/obj/Debug/netcoreapp2.0/Calculator.pdb
