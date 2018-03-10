@@ -25,6 +25,15 @@
 	margin-bottom: 0px;
 }
 
+.portfolio_link, .portfolio_link:hover {
+	text-decoration: none;
+	color: black;
+}
+
+.portfolio_spacer {
+	margin-top: 60px;
+}
+
 /* ===== adjusts the positioning on the page so nav links work ===== */
 
 #portfolio:before { 

@@ -1,0 +1,37 @@
+<!-- PORTFOLIO -->
+<a ></a>
+<div id="portfolio" class="portfolio_section">
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <a class="portfolio_link" href="/portfolio"><h2 class="portfolio_header">Portfolio</h2></a>
+            </div>	
+            <div class="card-body">
+                <h5 class="card-title">Music This Week (Node.js and Express.js)</h5>
+                <p class="card-text">This is the second app I've built with the express-generator. Though it is currently serving mostly static content, I wanted the app to be ready for more dynamic content as I add more features.</p>
+                <p class="card-text">The greatest challenge of this app was the actual process of accessing the Apple Music API. I read the handbook on JWT's along with the full documentation on Apple's music api to figure out how to create the token I would need, and then how to include it in my api calls. The JSON that comes back from Apple takes a little bit of work to get into, so I used Postman to view the results of a call and figure out how to get to the properties of the object that I needed.</p>		
+                <p class="card-text">Finally, I worked to build my express router and global.js files up so they could return, store, and use the data from my api calls to populate the page.</p>
+                <a href="https://github.com/jhunschejones/Music-This-Week" class="btn btn-dark">Repository</a>
+                <a href="music-this-week.herokuapp.com" class="btn btn-dark">Live Site</a>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Customer Service Tools</h5>
+                <p class="card-text">This repositiory is for a collection of basic web apps I’ve built for the call center customer service team at my current workplace. I used Bootstrap 4 and JavaScript to spin these up and I am very proud of the results.</p>
+                <p class="card-text">The most exciting and challenging part of this project has been interacting directly with my users. Through this experience, I have been able to make several significant improvements to different elements of the application. It has been incredible to see how much even a fairly basic app can make someone’s job easier, and I am inspired to do more work like this in the future!</p>
+                <a href="https://github.com/jhunschejones/Customer-Service-Tools" class="btn btn-dark">Repository</a>
+                <a href="https://filedn.com/lWYjvlpRciYBP9xzzyqgShB/Customer-Service-Tools/call_flow/checks.html" class="btn btn-dark">Live Site 1</a>
+                <a href="https://filedn.com/lWYjvlpRciYBP9xzzyqgShB/Customer-Service-Tools/home_base/index_public.html" class="btn btn-dark">Live Site 2</a>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Dani's Animals 3</h5>
+                <p class="card-text">In this project I was only working with a single page application, so I first updated the layout.jade file to include the jQuery and Bootstrap I wanted to use for the layout. Then I updated the index.jade file with the main sections of the application. To build out the RESTful architecture, I then had to update the users.js routes file for the GET, POST and DELETE functions. Finally I wrote a global.js file to load the table, take user input, and use AJAX to add and remove data from the table.</p>
+                <p class="card-text">Like any project, troubleshooting was the biggest challenge with this application. As I continue to work on separation of concerns, it is becoming more important than ever to form a clear schema of how the application is laid out. When a problem arises, this then enables me to trace it back through the application efficiently and find the source.</p>
+                <p class="card-text">After the first deploy of this app, I found some elements that needed to be addressed. In my first update, I re-worked the user interface to be a little cleaner and easier to use. I cleaned out duplicate CSS code and fixed my error handling for when a user tries to input a blank field.</p>
+                <p class="card-text">After the second deploy of this app, I decided it was time to address the lack of reactivity on mobile devices. I had previously attempted employing some CSS media breakpoints to help with reactivity, but this only helped on desktops not on mobile. I refactored my code and updated my meta tags so that the whole site can take advantage of bootstraps reactive elements. The site now looks much better on mobile without sacrificing any of its desktop functionality.</p>
+                <a href="https://github.com/jhunschejones/Dani-Animals-3" class="btn btn-dark">Repository</a>
+                <a href="https://dani-animals-3.herokuapp.com/" class="btn btn-dark">Live Site</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END PORTFOLIO -->
