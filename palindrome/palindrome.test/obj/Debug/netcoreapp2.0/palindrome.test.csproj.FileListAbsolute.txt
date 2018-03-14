@@ -1,0 +1,16 @@
+/Users/joshua/Desktop/palindrome/palindrome.test/bin/Debug/netcoreapp2.0/Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+/Users/joshua/Desktop/palindrome/palindrome.test/bin/Debug/netcoreapp2.0/Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+/Users/joshua/Desktop/palindrome/palindrome.test/bin/Debug/netcoreapp2.0/Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+/Users/joshua/Desktop/palindrome/palindrome.test/bin/Debug/netcoreapp2.0/palindrome.test.deps.json
+/Users/joshua/Desktop/palindrome/palindrome.test/bin/Debug/netcoreapp2.0/palindrome.test.runtimeconfig.json
+/Users/joshua/Desktop/palindrome/palindrome.test/bin/Debug/netcoreapp2.0/palindrome.test.runtimeconfig.dev.json
+/Users/joshua/Desktop/palindrome/palindrome.test/bin/Debug/netcoreapp2.0/palindrome.test.dll
+/Users/joshua/Desktop/palindrome/palindrome.test/bin/Debug/netcoreapp2.0/palindrome.test.pdb
+/Users/joshua/Desktop/palindrome/palindrome.test/bin/Debug/netcoreapp2.0/palindrome.dll
+/Users/joshua/Desktop/palindrome/palindrome.test/bin/Debug/netcoreapp2.0/palindrome.pdb
+/Users/joshua/Desktop/palindrome/palindrome.test/obj/Debug/netcoreapp2.0/palindrome.test.csprojResolveAssemblyReference.cache
+/Users/joshua/Desktop/palindrome/palindrome.test/obj/Debug/netcoreapp2.0/palindrome.test.csproj.CoreCompileInputs.cache
+/Users/joshua/Desktop/palindrome/palindrome.test/obj/Debug/netcoreapp2.0/palindrome.test.AssemblyInfoInputs.cache
+/Users/joshua/Desktop/palindrome/palindrome.test/obj/Debug/netcoreapp2.0/palindrome.test.AssemblyInfo.cs
+/Users/joshua/Desktop/palindrome/palindrome.test/obj/Debug/netcoreapp2.0/palindrome.test.dll
+/Users/joshua/Desktop/palindrome/palindrome.test/obj/Debug/netcoreapp2.0/palindrome.test.pdb
