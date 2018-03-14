@@ -1,0 +1,2 @@
+*.js linguist-vendored=true
+*.ps1 linguist-vendored=true
