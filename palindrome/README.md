@@ -11,30 +11,30 @@ Though a major portion of this challenge was focused on creating the unit tests,
 ## Outcome
 I wrote unit tests for 100% of the test cases mentioned in the assignment and even though I was writing the tests after writing the function (not test-driven-design), they still helped me refactor my function to correct the problem I was having accepting null values. Unit tests have done it again!
 
-  public bool IsPalindrome(string myString) {
-    // check for null first
-    if (string.IsNullOrEmpty(myString) && myString != "")
-    {
-        return false;
-    }
-    // catch empty string and strings of 0 or 1 characters
-    else if (myString.Length < 2)
-    {
-        return true;
-    }
+    public bool IsPalindrome(string myString) {
+      // check for null first
+      if (string.IsNullOrEmpty(myString) && myString != "")
+      {
+          return false;
+      }
+      // catch empty string and strings of 0 or 1 characters
+      else if (myString.Length < 2)
+      {
+          return true;
+      }
 
-    // convert string to array, reverse, convert back to string
-    char[] myArray = myString.ToCharArray();
-    Array.Reverse(myArray);
-    string myStringReverse = new string(myArray);
+      // convert string to array, reverse, convert back to string
+      char[] myArray = myString.ToCharArray();
+      Array.Reverse(myArray);
+      string myStringReverse = new string(myArray);
 
-    // catch longer strings
-    if (myString == myStringReverse)
-    {
-        return true;
+      // catch longer strings
+      if (myString == myStringReverse)
+      {
+          return true;
+      }
+      else
+      {
+          return false;
+      }
     }
-    else
-    {
-        return false;
-    }
-  }
