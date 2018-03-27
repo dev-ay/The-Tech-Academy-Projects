@@ -30,9 +30,10 @@ I am a current student at The Tech Academy, a software development boot camp and
 ### Unit Testing in C#
 * [Basic Unit Test](https://github.com/jhunschejones/The-Tech-Academy-Projects/tree/master/FirstUnitTest) (C#)
 * [TDD Example](https://github.com/jhunschejones/The-Tech-Academy-Projects/tree/master/SalaryCalculatorTest) (C#)
+* [Unit Testing 3](https://github.com/jhunschejones/The-Tech-Academy-Projects/tree/master/Polymorphism) (C#, .NET Core)
 
 ### Node.js/JavaScript Stack
-* [Chat App](https://github.com/jhunschejones/The-Tech-Academy-Projects/tree/master/node/Chat%20App) (mongodb, express, and socket.io)
+* [Chat App](https://github.com/jhunschejones/The-Tech-Academy-Projects/tree/master/node/Chat%20App) (MongoDB, Express, and Socket.io)
 * ["Dani's Animals": 2](https://github.com/jhunschejones/The-Tech-Academy-Projects/tree/master/node/Dani%20Animals%202) (node.js, express, jade, and mongodb)
-* ["Dani's Animals": 3](https://github.com/jhunschejones/Dani-Animals-3) (An improved full-stack app using node.js, express, jade, and mongodb)
-* [Music This Week](https://github.com/jhunschejones/This-Week) (A node.js + express app that makes an api call and returns content to display)
+* ["Dani's Animals": 3](https://github.com/jhunschejones/Dani-Animals-3) (An improved full-stack app using Node.js, Express, Jade, and MongoDB)
+* [Music This Week](https://github.com/jhunschejones/This-Week) (A Node.js, Express, and MongoDB app that makes api calls to return content for display)
