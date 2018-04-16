@@ -1,6 +1,6 @@
 # The Tech Academy Portfolio
 ## Overview
-I am a current student at The Tech Academy, a software development boot camp and licensed career school in downtown Portland, Oregon. As a part of this program I will be working on several small projects to build my skills in HTML, CSS, SQL, JavaScript, C#, and the .NET framework. I will also create some larger projects as well, and some of these you will find in their own repositories (especially if I am planning to build them out further.) The repository you are currently in is for my smaller practice projects that may or may not be fleshed out into full applications later. Thank you for taking the time to look through this code! I am always trying my hardest to grow and improve my skills and I welcome any and all feedback you may have. You can reach me on [LinkedIn](https://www.linkedin.com/in/jhunschejones), [Twitter](https://twitter.com/jhunschejones), or by [email](mailto:contact@joshuahunschejones.com).
+In 2018 I studied at The Tech Academy, a software development boot camp and licensed career school in Portland, Oregon. During the program I worked on several projects of varying scales to build my skills in HTML, CSS, SQL, JavaScript, C#, and the .NET framework. I also applied the learning skills I gained from these topics to the Node.js/Javascript stack, building several more web applications on my own to further my knowledge. Below is an overview of the projects I created during the program. Some are housed in this catch-all repository and several of the larger projects have their own repositories. Thank you for taking the time to look through my code, I am always trying my hardest to grow and improve my skills and I welcome any and all feedback you may have. You can reach me on [LinkedIn](https://www.linkedin.com/in/jhunschejones), [Twitter](https://twitter.com/jhunschejones), or by [email](mailto:contact@joshuahunschejones.com).
 
 ## Projects, Challenges and Exercises
 
@@ -25,7 +25,8 @@ I am a current student at The Tech Academy, a software development boot camp and
 * [Slot Machine](https://github.com/jhunschejones/The-Tech-Academy-C--Part-2/tree/master/SlotMachine) (C#, HTML)
 
 ### ASP.NET MVC
-* ["Dani's Animals": 1](https://github.com/jhunschejones/The-Tech-Academy-C--Part-2/tree/master/DaniAnimals) (C#, SQL, Razor, Bootstrap)
+* ["Dani's Animals": 1](https://github.com/jhunschejones/The-Tech-Academy-C--Part-2/tree/master/DaniAnimals) (C#, SQL, Razor, Entity Framework, Bootstrap)
+* [Red Fox University](https://github.com/jhunschejones/The-Tech-Academy-Projects/tree/master/RedFoxUniversity) (C#, Razor, Entity Framework)
 
 ### Unit Testing in C#
 * [Basic Unit Test](https://github.com/jhunschejones/The-Tech-Academy-Projects/tree/master/FirstUnitTest) (C#)
@@ -34,6 +35,6 @@ I am a current student at The Tech Academy, a software development boot camp and
 
 ### Node.js/JavaScript Stack
 * [Chat App](https://github.com/jhunschejones/The-Tech-Academy-Projects/tree/master/node/Chat%20App) (MongoDB, Express, and Socket.io)
-* ["Dani's Animals": 2](https://github.com/jhunschejones/The-Tech-Academy-Projects/tree/master/node/Dani%20Animals%202) (node.js, express, jade, and mongodb)
+* ["Dani's Animals": 2](https://github.com/jhunschejones/The-Tech-Academy-Projects/tree/master/node/Dani%20Animals%202) (Node.js, Express, Jade, and MongoDB)
 * ["Dani's Animals": 3](https://github.com/jhunschejones/Dani-Animals-3) (An improved full-stack app using Node.js, Express, Jade, and MongoDB)
-* [Music This Week](https://github.com/jhunschejones/This-Week) (A Node.js, Express, and MongoDB app that makes api calls to return content for display)
+* [Album Tags](https://github.com/jhunschejones/Album-Tags) (A Node.js, Express, MongoDB, and Firebase app that makes api calls to return content for display)
