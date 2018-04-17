@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="c2e53547-5847-44b7-857a-7ff431a3e314" ChangeDateTime="04/17/2018 22:30:06">
+    <Property Name="ElementName" Value="[dbo].[Books].[BookTitle]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Books]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Title" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="a70c3e06-92bb-497b-af4c-60749a5405a4" ChangeDateTime="04/17/2018 22:30:09">
+    <Property Name="ElementName" Value="[dbo].[Books].[BookAuthor]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Books]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Author" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="b5324c59-1419-4dcd-a288-98d5864ff2d9" ChangeDateTime="04/17/2018 22:30:12">
+    <Property Name="ElementName" Value="[dbo].[Books].[BookGenre]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Books]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Genre" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="53c9667b-8a6a-4d98-8660-894e3d0a33f8" ChangeDateTime="04/17/2018 22:31:23">
+    <Property Name="ElementName" Value="[dbo].[Books].[Owned]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Books]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Owned?" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="cf2b1c66-52f6-4bb1-b604-c57c2ce2f0a3" ChangeDateTime="04/17/2018 22:31:29">
+    <Property Name="ElementName" Value="[dbo].[Books].[Owned?]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Books]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="IsOwned" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="ba3a6a0d-60b1-4593-81a0-73aba8fc5a35" ChangeDateTime="04/17/2018 22:32:12">
+    <Property Name="ElementName" Value="[dbo].[Books].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Books]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="BookId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="1bb54db5-482c-40d6-a677-92fb125b20d2" ChangeDateTime="04/17/2018 22:32:34">
+    <Property Name="ElementName" Value="[dbo].[Tags].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Tags]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="TagId" />
+  </Operation>
+</Operations>
