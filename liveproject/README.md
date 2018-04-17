@@ -6,54 +6,39 @@ For my final project at The Tech Academy, I worked with a development team of my
 ## Stories I Worked On
 
 ### Change Button Font Color
-When it comes to picking up large code bases, I like starting with specific tasks in the actual code like tracing a specific functionality I know I will be working with, or finding where a bug is occuring. I find this helps me understand how the original developers built out the app and where to look for different things in the project structure. With this in mind, the first story I took was to update the font color of the button users click to submit reviews for a location they've traveled to. Though this sounds simple, I actually ran into a problem off the bat--the project had some style written in SASS and some in CSS, and there were often several overlapping targets for the same element. This meant the first place I thought to look for the change wasn't right and I had to keep tracing the places where previous developers had targeted the same ID to find what was taking precedence and make my change there.
+When it comes to picking up large code bases, I like starting with specific tasks in the actual code like tracing a specific functionality I know I will be working with, or finding where a bug is occuring. I find this helps me understand how the original developers built out the app and where to look for different things in the project structure. With this in mind, the first story I took was to update the font color of the button users click to submit reviews for a location they've traveled to. Though this sounds simple, I actually ran into a problem off the bat--the project had some style written in SASS and some in CSS, and there were often several overlapping targets for the same element. This meant the first place I thought to look for the change wasn't right and I had to keep tracing the places where previous developers had targeted the same ID to find what was taking precedence and make my change there. It was actually in the 5th place I looked that I found where the CSS was setting the font color and when I changed it there it finally worked on the page as the story had requested.
 
 ### Change Header Tags
-While I was working with Aja to troubleshoot the more complex user story described below, I completed a different user story requiring a change to a view partial so that the h3 and h1 tags are attached to the correct elements. The challenge with this story was that the change needed to occur on a page where the database in development did not have access to the images the ViewModel was asking for (to pass to the View.) This caused the app to error out when a user navigated to the page to see the updated html. Because the ViewModel C# code works in production, I went around this by passing in an empty string for the image path so that the page could load without images and display my html changes and confirm I had completed the changes the story requested.
+After completing that more straight-forward front-end story, I started work on a more challenging back end story to push myself. I ran into some blockers with updating the ViewModel, so while I was working with a senior developer to troubleshoot, I completed another front end story. This story required a change to a view partial so that the h3 and h1 tags could be attached to the correct elements for the look the client desired. The challenge with this story was that the change needed to occur on a page where the database in development did not have access to the images the ViewModel was asking for (to pass to the View.) This caused the app to error out when a user navigated to the page to see the updated html. Because the ViewModel C# code works in production, I went around this by passing in an empty string for the image path so that the page could load without images and display my html changes and confirm I had completed the changes the story requested.
 
-### Modify AdminUserViewModel
-With the CSS story under my belt and some idea of the types of problem solving this project was going to require, I next took on a more challenging story that involved modifying a ViewModel to update it's properties and create a constructor.
- When I tried to update the properties and constructor, I ran into some errors because the way I was getting the information in the constructor caused Visual Studio to think I was trying to update the model. Because the project was code-first, it wanted me to run a migration to update the model so the database could reflect the most current structure.
- *Still working on this story*
+### Change Posted on Date
+This story requested that I remove a date that was shown at the bottom of a posted review and place it under the user's picture and link. It also asked that the format be changed from "{day of week} {month} {day}, {year}" to "Posted on {month} {day}, {year}". Moving html that displayed the date to the new location was no problem, then I had to use some string manipulation to get the new display format being asked for. This is the code I used:
+    <h5>Posted on @Html.DisplayFor(modelItem => item.DatePosted.Split(',')[1]), @Html.DisplayFor(modelItem => item.DatePosted.Split(',')[2])</h5>
+This takes the date, which is stored in the database with the old format, and splits it up into an array, displaying the new pieces that we actually want in the format that was requested. 
 
-#### Notes:
-ASSIGNMENT:
-Modify the AdminUserViewModel to remove the PostFlag and ReviewFlag properties and replace them with the following properties from the Flag model:
-* string id of user who posted the flagged item
-* string id of user who flagged the item
-* Enum FlagOption FlagStatus
-* string path for the image associated with the post
-* DateTime DateFlagged
-Then create a constructor to create an AdminUserViewModel with these properties.
-  
-   // from Flag table
-   public string PostedUserID { get; set; }
-   public string FlaggedUserID { get; set; }
-   public FlagOption FlagStatus { get; set; }
-   public string PostImagePath { get; set; }
-   public DateTime DateFlagged { get; set; }
+### Fixing Assignment Bug
+When working on a portion of the reviews page, I ran into a bug that another developer had worked on earlier. Because our development database's do not have links to the review pictures, reviewPicture was coming in as null when trying to load the page and causing the page to break. I had worked around this to complete one of the other stories I described above, but it was apparent that it would need to be actually solved if we were going to do a lot of work on the review page. The fix in place was an if-else statement but I found the page was still breaking because it was not allowing us to call ".Path" on a null value. I changed the if-else statement to a ternary statement with a clarified null check and the page was able to load.
+    // Before
+    if (reviewPicture.Path == null) {
+        ReviewPicture = null
+    } else {
+        ReviewPicture = reviewPicture.Path
+    }
 
+    // After
+    ReviewPicture = (reviewPicture == null) ? ReviewPicture = null : ReviewPicture = reviewPicture.Path;
 
-   public AdminUserViewModel(User user, Flag flag)
-   {
-       PostedUserID = user.UserID;
-       User_ID = flag.User_ID;
-       FlagStatus = flag.FlagStatus;
-       //PostImagePath = post.PhotoID;
-       DateFlagged = flag.DateFlagged;
+### Add Flag Bug
+There is a button on the reviews page to add a flag to a review when a user feels it has inappropriate or inaccurate content. With all the conflicting stylesheets in this project, the test was displayed to one side of the button creating a sloppy feel to the "add flag" modal. I found the button element and added an ID, then found the CSS file that had other flag-related styling and adjusted the padding so the text looks nice and centered.
+   #add-flag-btn {
+   padding: 5px 10px 5px 10px;
    }
-  
-Progress:
-* added properties
-* created constructor outline
-  
-Questions:
-* constructor with just these properties? *yes*
-* If I am replacing PostFlag and ReviewFlag, should I chase down all the other areas these are used to replace with the new properties? *yes, make sure to note where you removed references*
-* does anything else go in my constructor? *nope!*
-* build error suggesting migration as soon as I modify AdminUserViewModel? *currently working on with Aja*
 
-#### Notes:
-Because this is a code-first project, when the database changes we need to create a migration. This is a snapshot of the changes to the database structure. To do this, in package manager console run:
-* add-migration
-* update-database
+### Photo Likes
+On the travel photos page of the app, there was a thumbs up button that allows a user to like a photo. Displayed over the button was a small badge that showed the total number of likes. This story was asking that the likes be incremented and decremented if the user clicked on the badge or the icon. The icon already functioned the way it was intended, so it was a matter of also applying this functionality to the badge as well.
+ The first hurdle was starting to feel familiar: there were no photos on the travel photos page for me to test the functionality. Additionally, attempting to add a review with a photo broke the app so there was work to do even before I could start working on the functionality of the likes badge.
+
+#### Note:
+* The code to change is in Views > Posts > PublicImages.cshtml, just need to add link to like count span
+* First we need to get an image in here!
+
