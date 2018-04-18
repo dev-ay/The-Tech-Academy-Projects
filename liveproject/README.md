@@ -6,6 +6,7 @@ For my final project at The Tech Academy, I worked with a development team of my
 ## Back End Stories
 * [Fixing Assignment Bug](#fixing-assignment-bug)
 * [Photo Likes](#photo-likes)
+* [Create AdminFlagViewModel](#create-adminflagviewmodel)
 
 ### Fixing Assignment Bug
 When working on a portion of the reviews page, I ran into a bug that another developer had worked on earlier. Because our development database's do not have links to the review pictures, reviewPicture was coming in as null when trying to load the page and causing the page to break. I had worked around this to complete one of the other stories I described above, but it was apparent that it would need to be actually solved if we were going to do a lot of work on the review page. The fix in place was an if-else statement but I found the page was still breaking because it was not allowing us to call ".Path" on a null value. I changed the if-else statement to a ternary statement with a clarified null check and the page was able to load.
@@ -83,6 +84,40 @@ With that change the page was working so that if the user clicked the badge or t
     .LikeCount :hover {
         /* ... */
         cursor: pointer;
+    }
+
+*To: [Front End Stories](#front-end-stories), [Back End Stories](#back-end-stories)*
+
+### Create AdminFlagViewModel
+The site has some flagging functionality that allows users to flag images they believe are inappropriate, inaccurate, or someone else's property. Currently there is not an easy way for administrators to view the list of flagged images to decide what to do with them. As a team, we are starting to put together this functionality and the first step was to create our ViewModel and add the logic into the controller to pass a list of these objects to our view.
+
+    // AdminFlagViewModel
+    public class AdminFlagViewModel
+    {
+        // properties
+        public int FlagID { get; set; }
+        //What kind of Flag is it
+        public FlagOption FlagStatus { get; set; }
+        public int? Post_ID { get; set; }
+        public string User_ID { get; set; }
+        public int? Review_ID { get; set; }
+        // Review or Post selected based on the FlagTarget
+        public virtual Review Review { get; set; }
+        public virtual Post Post { get; set; }
+        // who flagged it
+        public virtual User UserFlagging { get; set; }
+        public DateTime DateFlagged { get; set; }
+
+        // constructors
+        public AdminFlagViewModel() { }
+    }
+
+    // for AdminController
+    public ActionResult FlaggedContent ()
+    {
+        List<AdminFlagViewModel> flagged = new List<AdminFlagViewModel>();
+
+        return View(flagged);
     }
 
 *To: [Front End Stories](#front-end-stories), [Back End Stories](#back-end-stories)*
