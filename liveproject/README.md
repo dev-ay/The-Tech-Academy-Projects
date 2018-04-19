@@ -156,6 +156,8 @@ While waiting for two senior developers to discuss the direction the FlaggedCont
 * [Message Dropdown Cursors](#message-dropdown-cursors)
 * [Message Dropdown onclick()](#message-dropdown-onclick)
 * [Fix Sent Message Layout](#fix-sent-message-layout)
+* [Fix Message Button and Right Margin on Profile Page](#fix-message-button-and-right-margin-on-profile-page)
+* [Fix Message Notification Bubble Overflow](#fix-message-notification-bubble-overflow)
 
 ### Change Button Font Color
 This story asked that I update the font color of the button users click to submit reviews for a location they've traveled to. Though this sounds simple, I actually ran into a problem off the bat--the project had some style written in SASS and some in CSS, and there were often several overlapping targets for the same element. This meant the first place I thought to look for the change wasn't right and I had to keep tracing the places where previous developers had targeted the same ID to find what was taking precedence and make my change there. It was actually in the 5th place I looked that I found where the CSS was setting the font color and when I changed it there it finally worked on the page as the story had requested.  
@@ -278,8 +280,53 @@ In the message pop-up window, sent messages displayed justified to the right sid
 
 *Jump to: [Front End Stories](#front-end-stories), [Back End Stories](#back-end-stories), [Page Top](#live-project)*
 
+
+### Fix Message Button and Right Margin on Profile Page
+The message button on the profile page had formatting that looked like a quick-fix to a visibility problem so a story was put on the board to improve the styling to look more intentional. I added some text to the button then targeted the CSS and fixed the styling for the button before and after the user hovers over it. 
+
+    if ((int)Model.RelationshipStatus == 1)
+    {
+        <button id="send-message-btn" class="btn btn-success" onclick="SelectUser('@Model.RelationshipID', '@Model.UserID')"><small>Message</small>&nbsp;<i class="fa fa-commenting-o"></i></button>
+    }
+
+    ...
+
+    #send-message-btn {
+    color: #555555;
+    background-color: rgba(178,219,178,0.7);
+    font-size: 1.45em;
+    padding: 2px 5px 2px 5px;
+    transform: translateY(-18px);
+    box-shadow: 2px 0px 5px #d3d3d3;
+    }
+
+    #send-message-btn:hover {
+        color: #000;
+        background-color: rgb(178,219,178);
+    }
+
+While working on this improvement, I also noticed my friend, the shifting right margin gap, was back from an earlier story. I added some script to the top of our view for the profile page like I did in that story to rectify this problem. It grabs the div passed in by the template and modifies it to cover the whole page.
+
+    <script>
+        $("#content").css({ "top": "53px", "right": "-17px", "bottom": "43px" });
+    </script>
+
+*Jump to: [Front End Stories](#front-end-stories), [Back End Stories](#back-end-stories), [Page Top](#live-project)*
+
+### Fix Message Notification Bubble Overflow
+Sometime during the development of the message notification drop-down the line height and bubble height for the message preview were adjusted so that three lines showed with an ellipse at the end. The problem was that the top half of the fourth line was also showing, making it look sloppy and hard to read. I adjusted the line-height so that the lines no longer overlapped, then adjusted the height of the bubble content so that only the three lines showed as intended.
+
+    .message-item .left-bubble .text-limit {
+        max-height: 46px
+        line-height: 14px;
+    }
+
+*Jump to: [Front End Stories](#front-end-stories), [Back End Stories](#back-end-stories), [Page Top](#live-project)*
+
 ## Other Skills Learned
-* Working with a group of developers to identify front and back end bugs to improve usability of an application
+* Working with a group of developers to identify front and back end bugs to the improve usability of an application
 * Improving project flow by communicating about who needs to check out which files for their current story
 * Learning new efficiencies from other developers by observing their workflow and asking questions  
+* Practice with team programming/pair programming when one developer runs into a bug they cannot solve
+  
 *Jump to: [Front End Stories](#front-end-stories), [Back End Stories](#back-end-stories), [Page Top](#live-project)*
