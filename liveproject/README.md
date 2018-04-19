@@ -153,9 +153,9 @@ While waiting for two senior developers to discuss the direction the FlaggedCont
 * [Fix Reviews Background Image](#fix-reviews-background-image)
 * [Fix Home Page Button](#fix-home-page-button)
 * [Fix Right Side Margins](#fix-right-side-margins)
-* [Message Dropdown Cursors](#nessage-dropdown-cursors)
-* [Message Dropdown onclick()](#message-dropdown-onclick())
-* [Fix Sent Message Layout](#fix-sent=message=layout)
+* [Message Dropdown Cursors](#message-dropdown-cursors)
+* [Message Dropdown onclick()](#message-dropdown-onclick)
+* [Fix Sent Message Layout](#fix-sent-message-layout)
 
 ### Change Button Font Color
 This story asked that I update the font color of the button users click to submit reviews for a location they've traveled to. Though this sounds simple, I actually ran into a problem off the bat--the project had some style written in SASS and some in CSS, and there were often several overlapping targets for the same element. This meant the first place I thought to look for the change wasn't right and I had to keep tracing the places where previous developers had targeted the same ID to find what was taking precedence and make my change there. It was actually in the 5th place I looked that I found where the CSS was setting the font color and when I changed it there it finally worked on the page as the story had requested.  
