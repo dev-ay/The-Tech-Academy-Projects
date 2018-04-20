@@ -1,13 +1,14 @@
 # Live Project
 
 ## Introduction
-For my final project at The Tech Academy, I worked with a development team of my peers on a full-scale MVC/MVVM social media/traveling app in C#. It was a great opportunity to take on a legacy code base, see how the code was laid out, fix bugs, and add requested features. I saw first-hand how an app can evolve over time and outgrow some of the early choices the original developers made while building it. When changing direction on big decisions would require a larger rewrite that the client does not have time for, I saw how good developers can pick up what was there and make the best of the situation to deliver a quality product. We worked together as a team to learn the quirks of how the application was first written and how we could work within those constraints to still deliver the desired what was asked of us. During the two-week project I worked on a few [back end stories](#back-end-stories) that I am very proud of. Because much of the site had already been built, there was also a good deal of [front end stories](#front-end-stories) that needed to be completed, all of varying degrees of difficulties. We shared the stories available so that everyone on the team would have a chance to work on some front end and some back end content. Over the two week sprint we also worked together on some other project management and direction [skills](#other-skills-learned) that I'm sure I will use again and again on future projects.
+For my final project at The Tech Academy, I worked with a development team of my peers on a full-scale MVC/MVVM social media/traveling app in C#. It was a great opportunity to take on a legacy code base, see how the code was laid out, fix bugs, and add requested features. I saw first-hand how an app can evolve over time and outgrow some of the early choices the original developers made while building it. When changing direction on big decisions would require a larger rewrite that the client does not have time for, I saw how good developers can pick up what was there and make the best of the situation to deliver a quality product. We worked together as a team to learn the quirks of how the application was first written and how we could work within those constraints to still deliver the desired what was asked of us. During the two-week project I worked on a few [back end stories](#back-end-stories) that I am very proud of. Because much of the site had already been built, there was also a good deal of [front end stories](#front-end-stories) that needed to be completed, all of varying degrees of difficulties. We shared the stories available so that everyone on the team would have a chance to work on some front end and some back end content. Over the two week sprint I also had the opportunity to work on some other project management and team programming [skills](#other-skills-learned) that I'm confident I will use again and again on future projects.
 
 ## Back End Stories
 * [Fixing Assignment Bug](#fixing-assignment-bug)
 * [Photo Likes](#photo-likes)
 * [Create AdminFlagViewModel](#create-adminflagviewmodel)
-* [Create FlaggedContent View](#create-flaggedcontent-view)
+* [Modify AdminController](#modify-admincontroller)
+
 
 ### Fixing Assignment Bug
 When working on a portion of the reviews page, I ran into a bug that another developer had worked on earlier. Because our development database's do not have links to the review pictures, reviewPicture was coming in as null when trying to load the page and causing the page to break. I had worked around this to complete one of the other stories I described above, but it was apparent that it would need to be actually solved if we were going to do a lot of work on the review page. The fix in place was an if-else statement but I found the page was still breaking because it was not allowing us to call ".Path" on a null value. I changed the if-else statement to a ternary statement with a clarified null check and the page was able to load.
@@ -22,7 +23,7 @@ When working on a portion of the reviews page, I ran into a bug that another dev
     // After
     ReviewPicture = (reviewPicture == null) ? ReviewPicture = null : ReviewPicture = reviewPicture.Path;
 
-*Jump to: [Front End Stories](#front-end-stories), [Back End Stories](#back-end-stories), [Page Top](#live-project)*
+*Jump to: [Front End Stories](#front-end-stories), [Back End Stories](#back-end-stories), [Other Skills](#other-skills-learned), [Page Top](#live-project)*
 
 ### Photo Likes
 On the travel photos page of the app, there was a thumbs up button that allows a user to like a photo. Displayed over the button was a small badge that showed the total number of likes. This story asked that the likes be incremented and decremented if the user clicked on the badge *or* the icon. The icon already functioned the way it was intended, so it was a matter of also applying this functionality to the badge as well.
@@ -87,7 +88,7 @@ With that change the page was working so that if the user clicked the badge or t
         cursor: pointer;
     }
 
-*Jump to: [Front End Stories](#front-end-stories), [Back End Stories](#back-end-stories), [Page Top](#live-project)*
+*Jump to: [Front End Stories](#front-end-stories), [Back End Stories](#back-end-stories), [Other Skills](#other-skills-learned), [Page Top](#live-project)*
 
 ### Create AdminFlagViewModel
 The site has some flagging functionality that allows users to flag images they believe are inappropriate, inaccurate, or someone else's property. Currently there is not an easy way for administrators to view the list of flagged images to decide what to do with them. As a team, we are starting to put together this functionality and the first step was to create our ViewModel and add the logic into the controller to pass a list of these objects to our view.
@@ -121,29 +122,30 @@ The site has some flagging functionality that allows users to flag images they b
         return View(flagged);
     }
 
-*Jump to: [Front End Stories](#front-end-stories), [Back End Stories](#back-end-stories), [Page Top](#live-project)*
+*Jump to: [Front End Stories](#front-end-stories), [Back End Stories](#back-end-stories), [Other Skills](#other-skills-learned), [Page Top](#live-project)*
 
-### Create FlaggedContent View
-While waiting for two senior developers to discuss the direction the FlaggedContent view was going to go in, I completed a story to create the blank view so we have a place to start.
+### Modify AdminController
+This story is a the continuation of the feature we are building to create an view for admins where they can see all flagged content. Here I added a constructor to the AdminFlagViewModel that takes in a flag:
 
-    @model Bewander.ViewModels.AdminFlagViewModel
-    @{
-        ViewBag.Title = "FlaggedContent";
+    // constructors
+    public AdminFlagViewModel() { }
+    public AdminFlagViewModel(Flag flag) { }
+
+Then I modified the FlaggedContent method in the AdminController:
+
+    public ActionResult FlaggedContent()
+    {
+        List<AdminFlagViewModel> flagged = new List<AdminFlagViewModel>();
+        foreach (var item in bc.Flags.SqlQuery("SELECT * FROM dbo.Flags"))
+        {
+            AdminFlagViewModel flag = new AdminFlagViewModel(item);
+            flagged.Add(flag);
+        }
+        return View(flagged);
     }
 
-    <h2>FlaggedContent</h2>
-
-    <table class="table">
-        <tr>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-        </tr>
-    </table>
-
-*Jump to: [Front End Stories](#front-end-stories), [Back End Stories](#back-end-stories), [Page Top](#live-project)*
+Now I am passing an AdminFlagViewModel for each flag in the Flag table along to my view. Moving forward we will need to continue adding functionality here so that we can get the associated user and post information to display on that view so it can all be in one place.  
+*Jump to: [Front End Stories](#front-end-stories), [Back End Stories](#back-end-stories), [Other Skills](#other-skills-learned), [Page Top](#live-project)*
 
 ## Front End Stories
 * [Change Button Font Color](#change-button-font-color)
@@ -155,17 +157,21 @@ While waiting for two senior developers to discuss the direction the FlaggedCont
 * [Fix Right Side Margins](#fix-right-side-margins)
 * [Message Dropdown Cursors](#message-dropdown-cursors)
 * [Message Dropdown onclick()](#message-dropdown-onclick)
+* [Create First FlaggedContent View](#create-first-flaggedcontent-view)
 * [Fix Sent Message Layout](#fix-sent-message-layout)
 * [Fix Message Button and Right Margin on Profile Page](#fix-message-button-and-right-margin-on-profile-page)
 * [Fix Message Notification Bubble Overflow](#fix-message-notification-bubble-overflow)
+* [Fix Suggested Friends Layout](#fix-suggested-friends-layout)
+* [Scroll Down Arrow Should Disappear](#scroll-down-arrow-should-disappear)
+* [New FlaggedContent View](#new-flaggedcontent-view)
 
 ### Change Button Font Color
 This story asked that I update the font color of the button users click to submit reviews for a location they've traveled to. Though this sounds simple, I actually ran into a problem off the bat--the project had some style written in SASS and some in CSS, and there were often several overlapping targets for the same element. This meant the first place I thought to look for the change wasn't right and I had to keep tracing the places where previous developers had targeted the same ID to find what was taking precedence and make my change there. It was actually in the 5th place I looked that I found where the CSS was setting the font color and when I changed it there it finally worked on the page as the story had requested.  
-*Jump to: [Front End Stories](#front-end-stories), [Back End Stories](#back-end-stories), [Page Top](#live-project)*
+*Jump to: [Front End Stories](#front-end-stories), [Back End Stories](#back-end-stories), [Other Skills](#other-skills-learned), [Page Top](#live-project)*
 
 ### Change Header Tags
 This story required a change to a view partial so that the h3 and h1 tags could be attached to the correct elements for the look the client desired. The challenge with this story was that the change needed to occur on a page where the database in development did not have access to the images the ViewModel was asking for (to pass to the View.) This caused the app to error out when a user navigated to the page to see the updated html. Because the ViewModel C# code works in production, I went around this by passing in an empty string for the image path so that the page could load without images and display my html changes and confirm I had completed the changes the story requested.  
-*Jump to: [Front End Stories](#front-end-stories), [Back End Stories](#back-end-stories), [Page Top](#live-project)*
+*Jump to: [Front End Stories](#front-end-stories), [Back End Stories](#back-end-stories), [Other Skills](#other-skills-learned), [Page Top](#live-project)*
 
 ### Change Posted on Date
 This story requested that I remove a date that was shown at the bottom of a posted review and place it under the user's picture and link. It also asked that the format be changed from "{day of week} {month} {day}, {year}" to "Posted on {month} {day}, {year}". Moving html that displayed the date to the new location was no problem, then I had to use some string manipulation to get the new display format being asked for. This is the code I used:
@@ -173,7 +179,7 @@ This story requested that I remove a date that was shown at the bottom of a post
     <h5>Posted on @Html.DisplayFor(modelItem => item.DatePosted.Split(',')[1]), @Html.DisplayFor(modelItem => item.DatePosted.Split(',')[2])</h5>
 
 This takes the date, which is stored in the database with the old format, and splits it up into an array, displaying the new pieces that we actually want in the format that was requested.  
-*Jump to: [Front End Stories](#front-end-stories), [Back End Stories](#back-end-stories), [Page Top](#live-project)*
+*Jump to: [Front End Stories](#front-end-stories), [Back End Stories](#back-end-stories), [Other Skills](#other-skills-learned), [Page Top](#live-project)*
 
 ### Add Flag Layout Bug
 There is a button on the reviews page to add a flag to a review when a user feels it has inappropriate or inaccurate content. With all the conflicting stylesheets in this project, the test was displayed to one side of the button creating a sloppy feel to the "add flag" modal. I found the button element and added an ID, then found the CSS file that had other flag-related styling and adjusted the padding so the text looks nice and centered.
@@ -182,7 +188,7 @@ There is a button on the reviews page to add a flag to a review when a user feel
    padding: 5px 10px 5px 10px;
    }
 
-*Jump to: [Front End Stories](#front-end-stories), [Back End Stories](#back-end-stories), [Page Top](#live-project)*
+*Jump to: [Front End Stories](#front-end-stories), [Back End Stories](#back-end-stories), [Other Skills](#other-skills-learned), [Page Top](#live-project)*
 
 ### Fix Reviews Background Image
 For this story, I was focusing on the background image displayed on the create reviews page. It had been put in as an image tag but since it was loading inside a container element, the parent element's padding and margin properties were causing it to shift to one side. I looked through the other pages on the site that had nice backgrounds and it looked like in general, we were using CSS to put in background images. 
@@ -194,7 +200,7 @@ For this story, I was focusing on the background image displayed on the create r
         }
     </style>
 
-*Jump to: [Front End Stories](#front-end-stories), [Back End Stories](#back-end-stories), [Page Top](#live-project)*
+*Jump to: [Front End Stories](#front-end-stories), [Back End Stories](#back-end-stories), [Other Skills](#other-skills-learned), [Page Top](#live-project)*
 
 ### Fix Home Page Button
 On the home page there is a main action button that says "sign in" when a user is not signed in. When browsing the site looking for usability improvements, I noticed that once I was signed in it now said "sign up." The button functionality also now pointed to the "connect" page. I checked with the team and they did not believe this was a client request, so I adjusted the text to read "Connect" so that it more accurately described where it was pointing the user.
@@ -208,7 +214,7 @@ On the home page there is a main action button that says "sign in" when a user i
         <a href='@Url.Action("Index", "Reviews", new { userID = User.Identity.GetUserId() }, null)' class="bttn btn-ghost hidden-xs-down">Connect</a>
     }
 
-*Jump to: [Front End Stories](#front-end-stories), [Back End Stories](#back-end-stories), [Page Top](#live-project)*
+*Jump to: [Front End Stories](#front-end-stories), [Back End Stories](#back-end-stories), [Other Skills](#other-skills-learned), [Page Top](#live-project)*
 
 ### Fix Right Side Margins
 After looking at the site for so long, I had gotten used to a weird right side margin that displayed on all the pages, then got worse on the home and login pages. It took a good deal of searching to find where this was occurring but I discovered the problem was that we may have too much formatting set in our layout partial that is pulled into every page on the site. Other pages addressed this by adding inline styles, so instead of affecting the template view for the whole site I was able to clean up the margin by first commenting out one margin that was set for the whole site in styles.css. Then I added a little workaround to reach back up and add style to the parent element coming in from the template layout once I was in the home page:
@@ -218,7 +224,7 @@ After looking at the site for so long, I had gotten used to a weird right side m
     </script>
 
 I realize that in-line style and script is not the best approach to a situation like this for the long term, but completing a quick fix for the client without rewriting the template this seemed like a workable option. It will be important for us to keep track of where else we do this to find out if it's in enough places to just change the template instead as we move forward.  
-*Jump to: [Front End Stories](#front-end-stories), [Back End Stories](#back-end-stories), [Page Top](#live-project)*
+*Jump to: [Front End Stories](#front-end-stories), [Back End Stories](#back-end-stories), [Other Skills](#other-skills-learned), [Page Top](#live-project)*
 
 ### Message Dropdown Cursors
 In the site's navbar there is a drop-down that shows new messages from other users. It was configured so the entire drop-down showed a pointer cursor but there were actually only three areas where a user could click to pull up the message. Using the CSS below, I went through and set the whole drop-down to a default cursor, then targeted the three areas (plus the text in the message summary) that a user can click to pull up the messages window. I gave these areas back the pointer cursor so it is easier to see where to click. Finally, I added the text cursor when the user hovers over the search box in the message drop-down to clarify that they can enter text here.
@@ -238,7 +244,7 @@ In the site's navbar there is a drop-down that shows new messages from other use
         cursor: pointer;
     }
 
-*Jump to: [Front End Stories](#front-end-stories), [Back End Stories](#back-end-stories), [Page Top](#live-project)*
+*Jump to: [Front End Stories](#front-end-stories), [Back End Stories](#back-end-stories), [Other Skills](#other-skills-learned), [Page Top](#live-project)*
 
 ### Message Dropdown onclick()
 After pushing the previous fix to specify where the clickable areas are on the message dropdown, a new user story was added to change the entire list item for new messages into a clickable element. This was not hard to pick up since I had been in this portion of the code recently. I moved the onclick javascript event to the entire message-item instead of the separate elements and it worked as intended. I also updated the CSS so the pointer cursor tells the user they can click on the whole element. While I was in that CSS file, I also modified the cursor for the add user button as well, knocking out another story that had been put on the board at the same time.
@@ -258,7 +264,29 @@ After pushing the previous fix to specify where the clickable areas are on the m
         cursor: pointer;
     }
 
-*Jump to: [Front End Stories](#front-end-stories), [Back End Stories](#back-end-stories), [Page Top](#live-project)*
+*Jump to: [Front End Stories](#front-end-stories), [Back End Stories](#back-end-stories), [Other Skills](#other-skills-learned), [Page Top](#live-project)*
+
+### Create First FlaggedContent View
+As a quick first step to creating the FlaggedContent view, I completed a story to create a blank view that pulls in the AdminFlagViewModel. The final direction this view is going to take was not decided at the time when I created this so I followed the requirements in the story. Later on in this documentation you can see how we build out this view further once more of the direction was settled on.
+
+    @model Bewander.ViewModels.AdminFlagViewModel
+    @{
+        ViewBag.Title = "FlaggedContent";
+    }
+
+    <h2>FlaggedContent</h2>
+
+    <table class="table">
+        <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+    </table>
+
+*Jump to: [Front End Stories](#front-end-stories), [Back End Stories](#back-end-stories), [Other Skills](#other-skills-learned), [Page Top](#live-project)*
 
 ### Fix Sent Message Layout
 In the message pop-up window, sent messages displayed justified to the right side of the page with no right-side padding. This layout bug is not really visible when sending short messages, but it makes longer messages much harder to read. I found the CSS targeting the message element and adjusted the padding and text-align properties accordingly. I first tested the changes in Chrome developer tools, then implemented the changes in the actual code and re-tested to make sure it worked and did not break anything else.
@@ -278,7 +306,7 @@ In the message pop-up window, sent messages displayed justified to the right sid
         word-wrap: break-word;
     }
 
-*Jump to: [Front End Stories](#front-end-stories), [Back End Stories](#back-end-stories), [Page Top](#live-project)*
+*Jump to: [Front End Stories](#front-end-stories), [Back End Stories](#back-end-stories), [Other Skills](#other-skills-learned), [Page Top](#live-project)*
 
 
 ### Fix Message Button and Right Margin on Profile Page
@@ -311,7 +339,7 @@ While working on this improvement, I also noticed my friend, the shifting right 
         $("#content").css({ "top": "53px", "right": "-17px", "bottom": "43px" });
     </script>
 
-*Jump to: [Front End Stories](#front-end-stories), [Back End Stories](#back-end-stories), [Page Top](#live-project)*
+*Jump to: [Front End Stories](#front-end-stories), [Back End Stories](#back-end-stories), [Other Skills](#other-skills-learned), [Page Top](#live-project)*
 
 ### Fix Message Notification Bubble Overflow
 Sometime during the development of the message notification drop-down the line height and bubble height for the message preview were adjusted so that three lines showed with an ellipse at the end. The problem was that the top half of the fourth line was also showing, making it look sloppy and hard to read. I adjusted the line-height so that the lines no longer overlapped, then adjusted the height of the bubble content so that only the three lines showed as intended.
@@ -321,12 +349,59 @@ Sometime during the development of the message notification drop-down the line h
         line-height: 14px;
     }
 
-*Jump to: [Front End Stories](#front-end-stories), [Back End Stories](#back-end-stories), [Page Top](#live-project)*
+*Jump to: [Front End Stories](#front-end-stories), [Back End Stories](#back-end-stories), [Other Skills](#other-skills-learned), [Page Top](#live-project)*
+
+### Fix Suggested Friends Layout
+The suggested friends drop-down on the nav had some weird formatting that caused the container border to stay fixed even when there were more suggested friends than could fit inside of it. I made a correction to the CSS so that the outline would re-size along with the drop-down depending on how much content it had.
+
+    #suggested-wanderers-container {
+        border-width: 5px;
+        border-color: #b2dbb2;
+        border-radius: 12px;
+        border-style: solid;
+        width: 100%;
+        height: auto;
+    }
+
+Additionally, I found a way to modify the view so that it was only showing the top four suggested friends. This made it easier to use on mobile or small screens where the second level of scrolling feels a little more messy.
+
+    @foreach (var item in Model.Take(4))
+    {
+        //...
+    }
+
+After further discussion with our senior developer it was decided not to limit the suggested friends, per a previous request from the client so I rolled back this last change.  
+*Jump to: [Front End Stories](#front-end-stories), [Back End Stories](#back-end-stories), [Other Skills](#other-skills-learned), [Page Top](#live-project)*
+
+### Scroll Down Arrow Should Disappear
+The home page is constructed with four distinct sections that a user can scroll through vertically. There is an arrow indicating that more content is below and this story requested that the arrow be removed when the user scrolls to the bottom of the page. There was some functionality in the app already calling a javascript function to do this using .onscroll, but the problem was because the content on the page is loaded dynamically, this function was never called. Instead, I bound a function to the scrolling action on the main "content" div and was able to get the show and hide function to call when the user scrolled. For good measure, I moved the down arrow inside a div so I could remove the whole div when they got to the bottom and everything worked as intended.
+
+    <div id="scroll-down-arrow">
+        <i class="home-angle-down fa fa-angle-down" aria-hidden="true"></i>
+    </div>
+
+    ...
+
+    $("#content").bind('scroll', function () {
+        if ($("#content").scrollTop() > 2080) {
+            $('#scroll-down-arrow').hide();
+        } else {
+            $('#scroll-down-arrow').show();
+        }; 
+    }); 
+
+*Jump to: [Front End Stories](#front-end-stories), [Back End Stories](#back-end-stories), [Other Skills](#other-skills-learned), [Page Top](#live-project)*
+
+### New FlaggedContent View
+As the senior developers who were architechting this project discussed the admin view for flagged content further, they decided it would be best to replace the blank FlaggedContent view I created earlier with a list view scaffolded by VisualStudio. This is simply Add > View then I used AdminFlagViewModel to scaffold the view but removed the Data Context for now per the story request.  
+*Jump to: [Front End Stories](#front-end-stories), [Back End Stories](#back-end-stories), [Other Skills](#other-skills-learned), [Page Top](#live-project)*
 
 ## Other Skills Learned
 * Working with a group of developers to identify front and back end bugs to the improve usability of an application
 * Improving project flow by communicating about who needs to check out which files for their current story
 * Learning new efficiencies from other developers by observing their workflow and asking questions  
 * Practice with team programming/pair programming when one developer runs into a bug they cannot solve
+    * One of the developers on the team was having trouble with the JavaScript function being called to increment and decrement the likes on a page and myself and two others on the team sat with him and had him talk through what he had done so far. I asked questions about different ways to approach it until we found where it was broken and what needed to be fixed.
+    * When a user requests a friendship there is supposed to be a pending notification displayed. One of the other developers was hitting a wall while working on this story when he discovered the functionality was working four different ways across the application. I sat with him and we talked through the process of each JavaScript function being called. We discovered there were multiple functions by the same name being loaded, so we simplified the code down to just one function. Clicking the button would now work from the nav drop-down but not on a specific page. I realized that the page was populating two different spans with the same ID and these were what was being targeted by the JavaScript function. So we needed to make that user-specific element identifier a class and target the class instead so that a change in either place would affect both.
   
-*Jump to: [Front End Stories](#front-end-stories), [Back End Stories](#back-end-stories), [Page Top](#live-project)*
+*Jump to: [Front End Stories](#front-end-stories), [Back End Stories](#back-end-stories), [Other Skills](#other-skills-learned), [Page Top](#live-project)*
