@@ -10,6 +10,7 @@ For my final project at The Tech Academy, I worked with a development team of my
 * [Modify AdminController](#modify-admincontroller)
 * [Update AdminFlagViewModel and AdminController](#update-adminflagviewmodel-and-admincontroller)
 * [Fix Create Flag From Review](#fix-create-flag-from-review)
+* [Add More Properties to AdminFlagViewModel](#add-more-properties-to-adminflagviewmodel)
 
 
 ### Fixing Assignment Bug
@@ -281,6 +282,7 @@ There are two places on the site where a user can flag a posted image: the trave
 This story took a little longer to troubleshoot, because adding parameters to the view and controller was not resulting in the correct data posting to the table. Finally, I found where the modal actually calls a different partial view to actually create the flag. Once I did that I was able to make both the post id and review id nullable int values, then pass in a review id when the flag was for a review. This allowed the existing functionality of passing in just a post id for posts to continue to work as it had been.
 
 Code updated in Views:
+
     // _CreateFlag.cshtml
 
     @using (Html.BeginForm("Create", "Flag", new { postid = ViewBag.CreatePost, reviewid = ViewBag.CreateReview }, FormMethod.Post))
@@ -292,6 +294,7 @@ Code updated in Views:
     </div>
 
 Code updated in the Controller:
+
     // FlagController.cs
 
     [HttpPost]
@@ -326,6 +329,16 @@ Code updated in the Controller:
         return View(flag);
     }
 
+*Jump to: [Front End Stories](#front-end-stories), [Back End Stories](#back-end-stories), [Other Skills](#other-skills-learned), [Page Top](#live-project)*
+
+### Add More Properties to AdminFlagViewModel
+For this story, I needed to add the actual user name of both the user whose content is flagged and the user who flagged it, along with both user's emails. This was a little bit of a challenge because user emails were stored on a table that was not within the context where I was obtaining all the other values so far. I won't repost all the code here since I've used snippets from these files before, but what I ended up doing was trying out two different ways to obtain data from a database, SQL and LINQ:
+
+    flaggingUser = bc.Users.SqlQuery("SELECT * FROM [dbo].[User] WHERE UserID = @p0", flag.User_ID).SingleOrDefault();
+
+    flaggingUserEmail = ac.Users.Where(a => a.Id == flag.User_ID).Select(a => a.Email).FirstOrDefault();
+
+In a production code base it is important to go along with the standard for what the rest of the code is doing unless there is a good reason to change, but here I was pushing myself to see if I could learn and implement both of these approaches.  
 *Jump to: [Front End Stories](#front-end-stories), [Back End Stories](#back-end-stories), [Other Skills](#other-skills-learned), [Page Top](#live-project)*
 
 ## Front End Stories

@@ -27,6 +27,7 @@ In 2018 I studied at The Tech Academy, a software development boot camp and lice
 ### ASP.NET MVC
 * ["Dani's Animals": 1](https://github.com/jhunschejones/The-Tech-Academy-C--Part-2/tree/master/DaniAnimals) (C#, SQL, Razor, Entity Framework, Bootstrap)
 * [Red Fox University](https://github.com/jhunschejones/The-Tech-Academy-Projects/tree/master/RedFoxUniversity) (C#, Razor, Entity Framework)
+* [Live Project](https://github.com/jhunschejones/The-Tech-Academy-Projects/tree/master/liveproject) (C#, Razor, jQuery, CSS, Entity Framework, SQL)
 
 ### Unit Testing in C#
 * [Basic Unit Test](https://github.com/jhunschejones/The-Tech-Academy-Projects/tree/master/FirstUnitTest) (C#)
