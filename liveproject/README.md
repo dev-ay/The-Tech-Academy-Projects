@@ -8,6 +8,8 @@ For my final project at The Tech Academy, I worked with a development team of my
 * [Photo Likes](#photo-likes)
 * [Create AdminFlagViewModel](#create-adminflagviewmodel)
 * [Modify AdminController](#modify-admincontroller)
+* [Update AdminFlagViewModel and AdminController](#update-adminflagviewmodel-and-admincontroller)
+* [Fix Create Flag From Review](#fix-create-flag-from-review)
 
 
 ### Fixing Assignment Bug
@@ -145,6 +147,185 @@ Then I modified the FlaggedContent method in the AdminController:
     }
 
 Now I am passing an AdminFlagViewModel for each flag in the Flag table along to my view. Moving forward we will need to continue adding functionality here so that we can get the associated user and post information to display on that view so it can all be in one place.  
+*Jump to: [Front End Stories](#front-end-stories), [Back End Stories](#back-end-stories), [Other Skills](#other-skills-learned), [Page Top](#live-project)*
+
+### Update AdminFlagViewModel and AdminController
+In this story I needed to update the constructor in AdminFlagViewModel so that it was receiving and setting the following properties: The user who tagged an image, the image being tagged, the user who posted the image and the posting user's profile image.
+  
+In order to accomplish this I used my knowledge of MVC architecture to trace the path the information was going to take. I recognized I would need to update the constructor, but also the method in the controller:
+
+    // AdminController.cs, First Try
+
+    public ActionResult FlaggedContent()
+    {
+        List<AdminFlagViewModel> flagged = new List<AdminFlagViewModel>();
+        foreach (var flag in bc.Flags.ToList())
+        {
+            foreach (var review in bc.Reviews.SqlQuery("dbo.Review_Select @p0", flag.Review_ID))
+            {
+                foreach (var reviewImage in bc.Files.SqlQuery("SELECT * FROM dbo.File @p0", review.ImageID))
+                {
+                    var user = review.User;
+                    Image profilePicture = Image.GetProfileImages(user.UserID, FileType.ProfilePicture);
+                    AdminFlagViewModel items = new AdminFlagViewModel(flag, review, user, profilePicture, reviewImage);
+
+                    flagged.Add(items);
+                }
+            }
+        }
+
+        return View(flagged);
+    }
+
+On paper this looked like it worked at first, but once I started testing it I found errors for the multiple sql connections I had open at once. Using one query at a time, and accounting for the fact that flags can exist for both posts AND reviews, this was my corrected code:
+
+    // AdminController.cs, Second Try
+
+    public ActionResult FlaggedContent()
+    {
+        User thisUser;
+        Review thisReview;
+        Post thisPost;
+        File reviewImage;
+        List<AdminFlagViewModel> flagged = new List<AdminFlagViewModel>();
+
+        foreach (var flag in bc.Flags.ToList())
+        {
+            if (bc.Reviews.SqlQuery("dbo.Review_Select @p0", flag.Review_ID).SingleOrDefault() != null)
+            {
+                thisReview = bc.Reviews.SqlQuery("dbo.Review_Select @p0", flag.Review_ID).SingleOrDefault();
+                thisUser = thisReview.User;
+                reviewImage = bc.Files.SqlQuery("SELECT * FROM [dbo].[File] WHERE ID = @p0", thisReview.ImageID).SingleOrDefault();
+                Image profilePicture = Image.GetProfileImages(thisUser.UserID, FileType.ProfilePicture);
+
+                AdminFlagViewModel items = new AdminFlagViewModel(flag, thisReview, thisUser, profilePicture, reviewImage);
+                flagged.Add(items);
+            }
+
+            if (bc.Posts.SqlQuery("SELECT * FROM [dbo].[Post] WHERE ID = @p0", flag.Post_ID).SingleOrDefault() != null)
+            {
+                thisPost = bc.Posts.SqlQuery("SELECT * FROM [dbo].[Post] WHERE ID = @p0", flag.Post_ID).SingleOrDefault();
+                thisUser = thisPost.User;
+                reviewImage = bc.Files.SqlQuery("SELECT * FROM [dbo].[File] WHERE ID = @p0", thisPost.PhotoID).SingleOrDefault();
+                Image profilePicture = Image.GetProfileImages(thisUser.UserID, FileType.ProfilePicture);
+
+                AdminFlagViewModel items = new AdminFlagViewModel(flag, thisPost, thisUser, profilePicture, reviewImage);
+                flagged.Add(items);
+            }
+        }
+        // pass the flag, review, user, and image ID
+        return View(flagged);
+    }
+
+And here is the corresponding ViewModel:
+
+    //AdminFlagViewModel.cs
+
+    public class AdminFlagViewModel
+    {
+        // properties
+        public int FlagID { get; set; }
+        //What kind of Flag is it
+        public FlagOption FlagStatus { get; set; }
+        public int? Post_ID { get; set; }
+        public string User_ID { get; set; }
+        public string ReviewUserName { get; set; }
+        public string ReviweUserProfilePic { get; set; }
+        public int? Review_ID { get; set; }
+        // Review or Post selected based on the FlagTarget
+        public virtual Review Review { get; set; }
+        public virtual Post Post { get; set; }
+        // who flagged it
+        public virtual User UserFlagging { get; set; }
+        public DateTime DateFlagged { get; set; }
+        public string ReviewPicture { get; set; }
+        public string ReviewPicturePath { get; set; }
+
+        // constructors
+        public AdminFlagViewModel(Flag flag, Review review, User user, Image profilePicture, File reviewPicture)
+        {
+            FlagID = flag.FlagID;
+            FlagStatus = flag.FlagStatus;
+            Post_ID = flag.Post_ID;
+            User_ID = user.UserID;
+            Review_ID = review.ReviewID;
+            UserFlagging = flag.UserFlagging;
+            DateFlagged = flag.DateFlagged;
+            ReviewUserName = user.FirstName + " " + user.LastName;
+            ReviewPicture = (reviewPicture == null) ? ReviewPicture = null : ReviewPicture = reviewPicture.Path;
+            ReviewPicturePath = (ReviewPicturePath != "no-image.png") ? review.UserID + "/" + ReviewPicture : ReviewPicturePath;
+            ReviweUserProfilePic = (profilePicture.Path != "no-image.png") ? review.UserID + "/" + profilePicture.Path : profilePicture.Path;
+        }
+
+        public AdminFlagViewModel(Flag flag, Post post, User user, Image profilePicture, File reviewPicture)
+        {
+            FlagID = flag.FlagID;
+            FlagStatus = flag.FlagStatus;
+            Post_ID = flag.Post_ID;
+            User_ID = user.UserID;
+            Post_ID = post.ID;
+            UserFlagging = flag.UserFlagging;
+            DateFlagged = flag.DateFlagged;
+            ReviewUserName = user.FirstName + " " + user.LastName;
+            ReviewPicture = (reviewPicture == null) ? ReviewPicture = null : ReviewPicture = reviewPicture.Path;
+            ReviewPicturePath = (ReviewPicturePath != "no-image.png") ? post.UserID + "/" + ReviewPicture : ReviewPicturePath;
+            ReviweUserProfilePic = (profilePicture.Path != "no-image.png") ? post.UserID + "/" + profilePicture.Path : profilePicture.Path;
+        }
+    }
+
+*Jump to: [Front End Stories](#front-end-stories), [Back End Stories](#back-end-stories), [Other Skills](#other-skills-learned), [Page Top](#live-project)*
+
+### Fix Create Flag From Review
+There are two places on the site where a user can flag a posted image: the travelog page and the reviews page. The active functionality for both options is the same--when an image in a post is flagged, it adds an entry in the flag table with a post id. When an image in a *review* is flagged it also adds an entry to the flag table with a post id, when we really want it to record a review id. 
+  
+This story took a little longer to troubleshoot, because adding parameters to the view and controller was not resulting in the correct data posting to the table. Finally, I found where the modal actually calls a different partial view to actually create the flag. Once I did that I was able to make both the post id and review id nullable int values, then pass in a review id when the flag was for a review. This allowed the existing functionality of passing in just a post id for posts to continue to work as it had been.
+
+Code updated in Views:
+    // _CreateFlag.cshtml
+
+    @using (Html.BeginForm("Create", "Flag", new { postid = ViewBag.CreatePost, reviewid = ViewBag.CreateReview }, FormMethod.Post))
+
+    // _Summary.cshtml
+
+    <div class="modal-body">
+        @Html.Action("Create", "Flag", new { reviewid = item.ReviewID })
+    </div>
+
+Code updated in the Controller:
+    // FlagController.cs
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public ActionResult Create(int? postid, int? reviewid, [Bind(Include = "FlagID,FlagStatus")] Flag flag)
+    {
+        var flagData = from FlagOption f in Enum.GetValues(typeof(FlagOption))
+                        select new
+                        {
+                            Type = (int)f
+                        };
+
+        flag.DateFlagged = DateTime.Now;
+
+        //Post post = new Post();
+        //post = db.Posts.Where(m => m.ID == postid).First();
+        //flag.Post = post;
+        flag.Post_ID = postid;
+        flag.Review_ID = reviewid;
+
+        string user = User.Identity.GetUserId();
+        flag.User_ID = user;
+        
+
+        if (ModelState.IsValid)
+        {
+            db.Flags.Add(flag);
+            db.SaveChanges();
+            return Redirect(Request.UrlReferrer.ToString());
+        }
+
+        return View(flag);
+    }
+
 *Jump to: [Front End Stories](#front-end-stories), [Back End Stories](#back-end-stories), [Other Skills](#other-skills-learned), [Page Top](#live-project)*
 
 ## Front End Stories
@@ -346,6 +527,13 @@ Sometime during the development of the message notification drop-down the line h
 
     .message-item .left-bubble .text-limit {
         max-height: 46px
+        line-height: 14px;
+    }
+
+Later on in the project, I also completed another story with a very similar layout issue. There is an "inbox" tab on the logged-in user's profile that displays current chats. The message bubble on that page was having the same problem, so I targeted this element and added the CSS to fix it in this second location.
+
+    .inbox-message-item .left-bubble .text-limit {
+        max-height: 46px;
         line-height: 14px;
     }
 
