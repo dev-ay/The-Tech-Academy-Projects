@@ -11,6 +11,7 @@ For my final project at The Tech Academy, I worked with a development team of my
 * [Update AdminFlagViewModel and AdminController](#update-adminflagviewmodel-and-admincontroller)
 * [Fix Create Flag From Review](#fix-create-flag-from-review)
 * [Add More Properties to AdminFlagViewModel](#add-more-properties-to-adminflagviewmodel)
+* [Add Sorting and Filtering to Admin Flag Page](#add-sorting-and-filtering-to-admin-flag-page)
 
 
 ### Fixing Assignment Bug
@@ -341,6 +342,80 @@ For this story, I needed to add the actual user name of both the user whose cont
 In a production code base it is important to go along with the standard for what the rest of the code is doing unless there is a good reason to change, but here I was pushing myself to see if I could learn and implement both of these approaches.  
 *Jump to: [Front End Stories](#front-end-stories), [Back End Stories](#back-end-stories), [Other Skills](#other-skills-learned), [Page Top](#live-project)*
 
+### Add Sorting and Filtering to Admin Flag Page
+With the admin flag page displaying so much useful information, the next story asked me to add sorting and filtering functionality. This involved modifying the controller to take in a searchString and sortOrder parameter. I then converted my IEnumerable list to a List and used these values to either order the existing content, or modify the content being sent to the ViewModel.
+
+    var flaggedList = from s in flagged
+                        select s;
+
+    if (!String.IsNullOrEmpty(searchString))
+    {
+        flaggedList = flaggedList.Where(s => s.ReviewUserName.ToLower().Contains(searchString.ToLower())
+                                        || s.UserFlaggingName.ToLower().Contains(searchString.ToLower())
+                                        || s.ContentType.ToLower().Contains(searchString.ToLower()));
+    }
+
+    switch (sortOrder)
+    {
+        case "user_name_dec":
+            flaggedList = flaggedList.OrderByDescending(s => s.ReviewUserName);
+            break;
+        case "flagging_user_name":
+            flaggedList = flaggedList.OrderBy(s => s.UserFlaggingName);
+            break;
+        case "flagging_user_name_desc":
+            flaggedList = flaggedList.OrderByDescending(s => s.UserFlaggingName);
+            break;
+        case "type":
+            flaggedList = flaggedList.OrderBy(s => s.ContentType);
+            break;
+        case "type_desc":
+            flaggedList = flaggedList.OrderByDescending(s => s.ContentType);
+            break;
+        default:
+            flaggedList = flaggedList.OrderBy(s => s.ReviewUserName);
+            break;
+    }
+
+The view previously had some logic on it to determine which content type to show. Because the filtering and sorting I was now doing was in the controller though, I had to modify the ViewModel and controller method to add the content type further back in the app. This then allowed me to use content type as a searchable parameter in the back end. Finally, I added a search box to the view and links to the column headers to allow the user to sort by ascending and descending for the flagging user, posting user, or content type. If you read about the earlier version of this table, you'll see that I also combined a few of the columns so the display is simpler--showing the profile picture and user name all in one column. This helped make it clear what the user was sorting by when they clicked the column headers.
+
+    @using (Html.BeginForm())
+    {
+        <p>
+            Find by name or content type: @Html.TextBox("SearchString")
+            <input type="submit" value="Search" />
+        </p>
+    }
+
+    <br />
+
+    @*<p>
+        @Html.ActionLink("Create New", "Create")
+    </p>*@
+    <table class="table">
+        <tr>
+            <th>
+                @Html.ActionLink("Flagging User", "FlaggedContent", new { sortOrder = ViewBag.FlaggingUserSortParm })
+            </th>
+            <th>
+                @Html.ActionLink("Content Type", "FlaggedContent", new { sortOrder = ViewBag.TypeSortParm })
+            </th>
+            <th>
+                Picture Flagged
+            </th>
+            <th>
+                @Html.ActionLink("Review User", "FlaggedContent", new { sortOrder = ViewBag.NameSortParm })
+            </th>
+            <th>
+                Email
+            </th>
+            <th></th>
+        </tr>
+
+        ...
+
+*Jump to: [Front End Stories](#front-end-stories), [Back End Stories](#back-end-stories), [Other Skills](#other-skills-learned), [Page Top](#live-project)*
+
 ## Front End Stories
 * [Change Button Font Color](#change-button-font-color)
 * [Change Header Tags](#change-header-tags)
@@ -358,6 +433,8 @@ In a production code base it is important to go along with the standard for what
 * [Fix Suggested Friends Layout](#fix-suggested-friends-layout)
 * [Scroll Down Arrow Should Disappear](#scroll-down-arrow-should-disappear)
 * [New FlaggedContent View](#new-flaggedcontent-view)
+* [Add Flags Link to Admin Dropdown](#add-flags-link-to-admin-dropdown)
+* [Modify Admin Flag Table](#modify-admin-flag-table)
 
 ### Change Button Font Color
 This story asked that I update the font color of the button users click to submit reviews for a location they've traveled to. Though this sounds simple, I actually ran into a problem off the bat--the project had some style written in SASS and some in CSS, and there were often several overlapping targets for the same element. This meant the first place I thought to look for the change wasn't right and I had to keep tracing the places where previous developers had targeted the same ID to find what was taking precedence and make my change there. It was actually in the 5th place I looked that I found where the CSS was setting the font color and when I changed it there it finally worked on the page as the story had requested.  
@@ -594,7 +671,65 @@ The home page is constructed with four distinct sections that a user can scroll 
 *Jump to: [Front End Stories](#front-end-stories), [Back End Stories](#back-end-stories), [Other Skills](#other-skills-learned), [Page Top](#live-project)*
 
 ### New FlaggedContent View
-As the senior developers who were architechting this project discussed the admin view for flagged content further, they decided it would be best to replace the blank FlaggedContent view I created earlier with a list view scaffolded by VisualStudio. This is simply Add > View then I used AdminFlagViewModel to scaffold the view but removed the Data Context for now per the story request.  
+As the senior developers who were architecting this project discussed the admin view for flagged content further, they decided it would be best to replace the blank FlaggedContent view I created earlier with a list view scaffolded by VisualStudio. This is simply Add > View then I used AdminFlagViewModel to scaffold the view but removed the Data Context for now per the story request.  
+*Jump to: [Front End Stories](#front-end-stories), [Back End Stories](#back-end-stories), [Other Skills](#other-skills-learned), [Page Top](#live-project)*
+
+### Add Flags Link to Admin Dropdown
+In the top right of the site there is a drop down menu that allows users to log off, and if the user is an admin it gives them access to the admin panel. Now that we have an under-construction FlaggedContent page, this story asked that we add a link to this dropdown titled "Flags" that would take us to this page. Here is my HTML and Razor:
+
+    <li>@Html.ActionLink("Flags", "FlaggedContent", "Admin")</li>
+
+The first string is the link text, the second string is the action, and the third string is the controller.  
+*Jump to: [Front End Stories](#front-end-stories), [Back End Stories](#back-end-stories), [Other Skills](#other-skills-learned), [Page Top](#live-project)*
+
+### Modify Admin Flag Table
+The admin flagged content page was now easier to get to with the dropdown link, and working using the ViewModel and controller functionality that had been added. This story asked that I update the actual table in the view so that it displayed a specific set of information about the person flagging the content and the person who posted the content. I also had to had a line to both the controller and ViewModel to get the flagging user's profile picture to the view. This was a good exercise in using Razor syntax to affect how the values coming from the ViewModel are displayed.
+
+    // updates to FlaggedContent.cshtml
+
+    <table class="table">
+        <tr>
+            <th>Flagging User</th>
+            <th>Name</th>
+            <th>Content Type</th>
+            <th>Picture Flagged</th>
+            <th>Review User</th>
+            <th>Name</th>
+            <th>Email</th>
+        </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <img src="~/images/@Html.DisplayFor(modelItem => item.UserFlaggingProfilePic)" style="width:50px;height:auto;" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserFlaggingName)
+            </td>
+                @if (item.Review_ID == null)
+                  {
+                  <td>Post</td>
+                  }
+                @if (item.Post_ID == null)
+                  {
+                  <td>Review</td>
+                  } 
+            <td>
+                <img src="~/images/@Html.DisplayFor(modelItem => item.ReviewPicturePath)" style="width:50px;height:auto;" />
+            </td>
+            <td>
+                <img src="~/images/@Html.DisplayFor(modelItem => item.ReviweUserProfilePic)" style="width:50px;height:auto;" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReviewUserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserEmail)
+            </td>
+        </tr>
+    }
+
 *Jump to: [Front End Stories](#front-end-stories), [Back End Stories](#back-end-stories), [Other Skills](#other-skills-learned), [Page Top](#live-project)*
 
 ## Other Skills Learned
