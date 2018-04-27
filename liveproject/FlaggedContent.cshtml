@@ -1,0 +1,63 @@
+@model IEnumerable<Bewander.ViewModels.AdminFlagViewModel>
+
+@{
+    ViewBag.Title = "FlaggedContent";
+}
+
+<h2>FlaggedContent</h2>
+
+@using (Html.BeginForm())
+{
+    <p>
+        Find by name or content type: @Html.TextBox("SearchString")
+        <input type="submit" value="Search" />
+    </p>
+}
+
+<br />
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.ActionLink("Flagging User", "FlaggedContent", new { sortOrder = ViewBag.FlaggingUserSortParm })
+        </th>
+        <th>
+            @Html.ActionLink("Content Type", "FlaggedContent", new { sortOrder = ViewBag.TypeSortParm })
+        </th>
+        <th>
+            Picture Flagged
+        </th>
+        <th>
+            @Html.ActionLink("Review User", "FlaggedContent", new { sortOrder = ViewBag.NameSortParm })
+        </th>
+        <th>
+            Email
+        </th>
+    </tr>
+
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <img src="~/images/@Html.DisplayFor(modelItem => item.UserFlaggingProfilePic)" style="width:50px;height:auto;" />
+                &nbsp;
+                @Html.DisplayFor(modelItem => item.UserFlaggingName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ContentType)
+            </td>
+            <td>
+                <img src="~/Images/@Html.DisplayFor(modelItem => item.ReviewPicturePath)" style="width:50px;height:auto;" />
+            </td>
+            <td>
+                <img src="~/Images/@Html.DisplayFor(modelItem => item.ReviweUserProfilePic)" style="width:50px;height:auto;" />
+                &nbsp;
+                @Html.DisplayFor(modelItem => item.ReviewUserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserEmail)
+            </td>
+        </tr>
+    }
+</table>
