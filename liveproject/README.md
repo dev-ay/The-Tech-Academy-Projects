@@ -1,7 +1,10 @@
 # Live Project
 
 ## Introduction
-For my final project at The Tech Academy, I worked with a development team of my peers on a full-scale MVC/MVVM social media/traveling app in C#. It was a great opportunity to take on a legacy code base, see how the code was laid out, fix bugs, and add requested features. I saw first-hand how an app can evolve over time and outgrow some of the early choices the original developers made while building it. When changing direction on big decisions would require a larger rewrite that the client does not have time for, I saw how good developers can pick up what was there and make the best of the situation to deliver a quality product. We worked together as a team to learn the quirks of how the application was first written and how we could work within those constraints to still deliver the desired what was asked of us. During the two-week project I worked on a few [back end stories](#back-end-stories) that I am very proud of. Because much of the site had already been built, there was also a good deal of [front end stories](#front-end-stories) that needed to be completed, all of varying degrees of difficulties. We shared the stories available so that everyone on the team would have a chance to work on some front end and some back end content. Over the two week sprint I also had the opportunity to work on some other project management and team programming [skills](#other-skills-learned) that I'm confident I will use again and again on future projects.
+For my final project at The Tech Academy, I worked with a development team of my peers on a full-scale MVC/MVVM social media/traveling app in C#. It was a great opportunity to take on a legacy code base, see how the code was laid out, fix bugs, and add requested features. I saw first-hand how an app can evolve over time and outgrow some of the early choices the original developers made while building it. When changing direction on big decisions would require a larger rewrite that the client does not have time for, I saw how good developers can pick up what was there and make the best of the situation to deliver a quality product. We worked together as a team to learn the quirks of how the application was first written and how we could work within those constraints to still deliver the desired what was asked of us. During the two-week project, I worked on several [back end stories](#back-end-stories) that I am very proud of. Because much of the site had already been built, there were also a good deal of [front end stories](#front-end-stories) and UX improvements that needed to be completed, all of varying degrees of difficulty. We shared the stories available so that everyone on the team would have a chance to work on some front end and some back end content. Over the two week sprint I also had the opportunity to work on some other project management and team programming [skills](#other-skills-learned) that I'm confident I will use again and again on future projects.
+  
+Below are descriptions of the stories I worked on, along with code snippets and navigation links. I also have some full code files in this repo for one of the larger functionalities I implemented--enabling site administrators to view information about flagged content. This includes the method I contributed to the [Controller](https://github.com/jhunschejones/The-Tech-Academy-Projects/blob/master/liveproject/Code/AdminController_FlaggedContentMethod.cs), as well as the [ViewModel](https://github.com/jhunschejones/The-Tech-Academy-Projects/blob/master/liveproject/Code/AdminFlagViewModel.cs) and [View](https://github.com/jhunschejones/The-Tech-Academy-Projects/blob/master/liveproject/FlaggedContent.cshtml) I built.
+
 
 ## Back End Stories
 * [Fixing Assignment Bug](#fixing-assignment-bug)
@@ -416,6 +419,7 @@ The view previously had some logic on it to determine which content type to show
 
 *Jump to: [Front End Stories](#front-end-stories), [Back End Stories](#back-end-stories), [Other Skills](#other-skills-learned), [Page Top](#live-project)*
 
+
 ## Front End Stories
 * [Change Button Font Color](#change-button-font-color)
 * [Change Header Tags](#change-header-tags)
@@ -731,6 +735,7 @@ The admin flagged content page was now easier to get to with the dropdown link, 
     }
 
 *Jump to: [Front End Stories](#front-end-stories), [Back End Stories](#back-end-stories), [Other Skills](#other-skills-learned), [Page Top](#live-project)*
+
 
 ## Other Skills Learned
 * Working with a group of developers to identify front and back end bugs to the improve usability of an application
